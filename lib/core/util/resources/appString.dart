@@ -7,7 +7,13 @@ class AppString {
   static const donition = 'صدقة جارية';
   static const morning = 'أذكار الصباح';
   static const evening = 'أذكار المساء';
+  static const azkarElmasged = 'أذكار المسجد';
+  static const azkarElnoom = 'أذكار النوم';
+  static const azkarElsalah = 'أذكار الصلاة';
   static const tasbeh = 'تسبيح';
   static const quran = 'القرآن الكريم';
+  static const totalTasbeeh = 'مجموع التسبيحات';
+  static const copy = 'نسخ';
+  static const repeat = 'عدد التكرار';
 
 }

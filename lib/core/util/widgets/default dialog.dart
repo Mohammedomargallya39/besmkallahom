@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../resources/colors_manager.dart';
 import '../resources/constants_manager.dart';
 import 'myButton.dart';
-import 'myText.dart';
+import 'default_text.dart';
 import 'my_icon_button.dart';
 
 class DefaultDialog extends Dialog {
@@ -45,7 +45,7 @@ class DefaultDialog extends Dialog {
                 children: [
                   Expanded(
                     flex: 4,
-                    child: myText(
+                    child: DefaultText(
                         title: message, align: TextAlign.center, style: Style.medium
                     ),
                   ),

@@ -99,7 +99,7 @@ flutter:
     - assets/images/svg/
     - assets/images/lotti/
     - assets/images/png/
-    - assets/json/
+#    - assets/json/
     - assets/fonts/
     - assets/translations/
 

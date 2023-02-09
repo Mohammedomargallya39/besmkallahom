@@ -4,7 +4,7 @@ import 'package:besmkallahom/core/util/resources/colors_manager.dart';
 import 'package:besmkallahom/core/util/resources/constants_manager.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
 import 'package:besmkallahom/core/util/widgets/default_action_button.dart';
-import 'package:besmkallahom/core/util/widgets/myText.dart';
+import 'package:besmkallahom/core/util/widgets/default_text.dart';
 import 'package:besmkallahom/features/home/presentation/controller/bloc.dart';
 import 'package:besmkallahom/features/home/presentation/controller/state.dart';
 import 'package:besmkallahom/features/home/presentation/screens/quran/surah_screen.dart';
@@ -26,7 +26,7 @@ class QuranWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 verticalSpace(25.rSp),
-                myText(
+                DefaultText(
                   title: AppString.quran,
                   style: Style.medium,
                   fontWeight: FontWeight.w600,
@@ -46,7 +46,7 @@ class QuranWidget extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            myText(
+                            DefaultText(
                               title: 'معدل الختمة',
                               style: Style.medium,
                               fontWeight: FontWeight.w600,
@@ -67,7 +67,7 @@ class QuranWidget extends StatelessWidget {
                                   ),
                                 ),
                                 verticalSpace(1.h),
-                                myText(
+                                DefaultText(
                                   title: '30%',
                                   style: Style.medium,
                                   fontSize: 15.rSp,
@@ -106,7 +106,7 @@ class QuranWidget extends StatelessWidget {
                                         children: [
                                           Row(
                                             children: [
-                                              myText(
+                                              DefaultText(
                                                 title: 'الفاتحة',
                                                 style: Style.large,
                                                 fontSize: 20.rSp,
@@ -119,7 +119,7 @@ class QuranWidget extends StatelessWidget {
                                                 backgroundColor: ColorsManager.mainCard,
                                                 child: Padding(
                                                   padding: EdgeInsets.only(top: 0.8.h),
-                                                  child: myText(
+                                                  child: DefaultText(
                                                     align: TextAlign.center,
                                                     title: '1',
                                                     style: Style.medium,
@@ -179,7 +179,7 @@ class QuranWidget extends StatelessWidget {
                                       backgroundColor: Colors.transparent,
                                     ),
                                     horizontalSpace(2.w),
-                                    myText(
+                                    DefaultText(
                                       title: 'الفاتحة',
                                       style: Style.medium,
                                       fontSize: 30.rSp,
@@ -187,7 +187,7 @@ class QuranWidget extends StatelessWidget {
                                       fontFamily: 'arabic',
                                     ),
                                     const Spacer(),
-                                    myText(
+                                    DefaultText(
                                       title: 'إضغط للإستكمال',
                                       fontSize: 15.rSp,
                                       style: Style.extraSmall,

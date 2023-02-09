@@ -36,6 +36,7 @@ enum Style {
   large,
   headLarge,
   headMedium,
+  headSmall
 }
 
 
@@ -213,7 +214,7 @@ Color chooseColor(TOAST toast) {
       color = ColorsManager.success;
       break;
     case TOAST.error:
-      color = ColorsManager.error;
+      color = ColorsManager.redPrimary;
       break;
     case TOAST.info:
       color = ColorsManager.info;

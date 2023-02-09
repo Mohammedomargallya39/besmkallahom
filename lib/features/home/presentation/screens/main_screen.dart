@@ -7,7 +7,7 @@ import '../../../../core/util/resources/appString.dart';
 import '../../../../core/util/resources/assets.gen.dart';
 import '../../../../core/util/resources/colors_manager.dart';
 import '../../../../core/util/resources/constants_manager.dart';
-import '../../../../core/util/widgets/myText.dart';
+import '../../../../core/util/widgets/default_text.dart';
 import '../controller/bloc.dart';
 import '../controller/state.dart';
 
@@ -45,19 +45,19 @@ class MainScreen extends StatelessWidget {
                 items: [
                   CustomNavigationBarItem(
                     icon: SvgPicture.asset(Assets.images.svg.home),
-                    title: const myText(title: AppString.home, style: Style.medium),
+                    title: const DefaultText(title: AppString.home, style: Style.medium),
                   ),
                   CustomNavigationBarItem(
                     icon: SvgPicture.asset(Assets.images.svg.book),
-                    title: const myText(title: AppString.mushaf, style: Style.medium),
+                    title: const DefaultText(title: AppString.mushaf, style: Style.medium),
                   ),
                   CustomNavigationBarItem(
                     icon: SvgPicture.asset(Assets.images.svg.starBook),
-                    title: const myText(title: AppString.azkar, style: Style.medium),
+                    title: const DefaultText(title: AppString.azkar, style: Style.medium),
                   ),
                   CustomNavigationBarItem(
                     icon: SvgPicture.asset(Assets.images.svg.donition),
-                    title: const myText(title: AppString.donition, style: Style.medium),
+                    title: const DefaultText(title: AppString.donition, style: Style.medium),
                   ),
                 ],
                 currentIndex: homeCubit.initialTabIndex,

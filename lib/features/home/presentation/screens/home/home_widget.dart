@@ -1,11 +1,13 @@
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
+import 'package:besmkallahom/features/home/presentation/screens/tasbeeh/tasbeeh_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/util/resources/appString.dart';
 import '../../../../../core/util/resources/assets.gen.dart';
 import '../../../../../core/util/resources/colors_manager.dart';
 import '../../../../../core/util/resources/constants_manager.dart';
-import '../../../../../core/util/widgets/myText.dart';
+import '../../../../../core/util/widgets/default_text.dart';
 import '../../controller/bloc.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -25,7 +27,7 @@ class HomeWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                myText(
+                DefaultText(
                   title: AppString.appName,
                   style: Style.medium,
                   fontWeight: FontWeight.w600,
@@ -46,7 +48,7 @@ class HomeWidget extends StatelessWidget {
                                   right: 20.rSp,
                                   top: 5.rSp
                               ),
-                              child: myText(
+                              child: DefaultText(
                                 title: AppString.morning,
                                 style: Style.medium,
                                 fontWeight: FontWeight.w600,
@@ -67,7 +69,7 @@ class HomeWidget extends StatelessWidget {
                                   right: 20.rSp,
                                   top: 5.rSp
                               ),
-                              child: myText(
+                              child: DefaultText(
                                 title: AppString.evening,
                                 style: Style.medium,
                                 fontWeight: FontWeight.w600,
@@ -80,24 +82,29 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
                 verticalSpace(1.h,),
-                Stack(
-                    alignment: AlignmentDirectional.centerStart,
-                    children: [
-                      SvgPicture.asset(Assets.images.svg.tasbeh),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            right: 20.rSp,
-                            top: 5.rSp
+                InkWell(
+                  onTap: (){
+                    navigateTo(context, const TasbeehScreen());
+                  },
+                  child: Stack(
+                      alignment: AlignmentDirectional.centerStart,
+                      children: [
+                        SvgPicture.asset(Assets.images.svg.tasbeh),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: 20.rSp,
+                              top: 5.rSp
+                          ),
+                          child: DefaultText(
+                            title: AppString.tasbeh,
+                            style: Style.medium,
+                            fontWeight: FontWeight.w600,
+                            color: ColorsManager.white,
+                            fontSize: 16.rSp,
+                          ),
                         ),
-                        child: myText(
-                          title: AppString.tasbeh,
-                          style: Style.medium,
-                          fontWeight: FontWeight.w600,
-                          color: ColorsManager.white,
-                          fontSize: 16.rSp,
-                        ),
-                      ),
-                    ]),
+                      ]),
+                ),
                 verticalSpace(2.h,),
                 Stack(
                     alignment: AlignmentDirectional.center,
@@ -109,7 +116,7 @@ class HomeWidget extends StatelessWidget {
                             homeCubit.pickRandomHomeSlah();
                             return Padding(
                               padding: EdgeInsets.fromLTRB(20.rSp, 40.rSp, 20.rSp,0),
-                              child: myText(
+                              child: DefaultText(
                                 align: TextAlign.center,
                                 title: homeCubit.pickedRandom!,
                                 style: Style.medium,

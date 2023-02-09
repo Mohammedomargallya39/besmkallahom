@@ -109,6 +109,45 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/tasbeh
   String get tasbeh => 'assets/images/svg/tasbeh.svg';
 
+  /// File path: assets/images/svg/tasbeeh_counter_button.svg
+  String get tasbehCounterButton => 'assets/images/svg/tasbeeh_counter_button.svg';
+
+  /// File path: assets/images/svg/tasbeeh_appbar_bachground.svg
+  String get tasbehAppBarBackground => 'assets/images/svg/tasbeeh_appbar_bachground.svg';
+
+  /// File path: assets/images/svg/icn_back.svg
+  String get backIcon => 'assets/images/svg/icn_back.svg';
+
+  /// File path: assets/images/svg/morning_azkar.svg
+  String get morningAzkar => 'assets/images/svg/morning_azkar.svg';
+
+  /// File path: assets/images/svg/evening_azkar.svg
+  String get eveningAzkar => 'assets/images/svg/evening_azkar.svg';
+
+  /// File path: assets/images/svg/azkar_elsalah.svg
+  String get azkarElsalah => 'assets/images/svg/azkar_elsalah.svg';
+
+  /// File path: assets/images/svg/azkar_elnoom.svg
+  String get azkarElnoom => 'assets/images/svg/azkar_elnoom.svg';
+
+  /// File path: assets/images/svg/azkar_elmasged.svg
+  String get azkarElmasged => 'assets/images/svg/azkar_elmasged.svg';
+
+  /// File path: assets/images/svg/elmasged_azkar_appbar.svg
+  String get elmasgedAzkarAppBar => 'assets/images/svg/elmasged_azkar_appbar.svg';
+
+  /// File path: assets/images/svg/elsalah_azkar_appbar.svg
+  String get elsalahAzkarAppBar => 'assets/images/svg/elsalah_azkar_appbar.svg';
+
+  /// File path: assets/images/svg/elnoom_azkar_appbar.svg
+  String get elnoomAzkarAppBar => 'assets/images/svg/elnoom_azkar_appbar.svg';
+
+  /// File path: assets/images/svg/morning_azkar_appbar.svg
+  String get morningAzkarAppBar => 'assets/images/svg/morning_azkar_appbar.svg';
+
+  /// File path: assets/images/svg/evening_azkar_appbar.svg
+  String get eveningAzkarAppBar => 'assets/images/svg/evening_azkar_appbar.svg';
+
   /// File path: assets/images/svg/slah
   String get slah => 'assets/images/svg/slah.svg';
 

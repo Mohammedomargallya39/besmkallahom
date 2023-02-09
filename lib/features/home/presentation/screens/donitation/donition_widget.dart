@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../../../core/util/resources/constants_manager.dart';
 import '../../../../../core/util/widgets/myButton.dart';
-import '../../../../../core/util/widgets/myText.dart';
+import '../../../../../core/util/widgets/default_text.dart';
 import '../../controller/bloc.dart';
 
 class SadakaWidget extends StatelessWidget {
@@ -19,14 +19,14 @@ class SadakaWidget extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                myText(
+                DefaultText(
                     title: 'صدقة جارية',
                     style: Style.large,
                     fontSize: 30.rSp,
                     fontWeight: FontWeight.w600,
                 ),
                 verticalSpace(5.h),
-                myText(
+                DefaultText(
                   align: TextAlign.center,
                   title: 'شارك التطبيق لمن تعرف ليصبح صدقة جارية لنا و لك',
                   style: Style.medium,

@@ -1,11 +1,14 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class ColorsManager {
   ///Primary Colors
   static const Color primary = Color(0xfff06400);
   static const Color secondary = Color(0xff051027);
   static const Color redPrimary = Color(0xfffd0000);
   static const Color orangePrimary = Color(0xffFFC10E);
+  static const Color transparent = Colors.transparent;
 
   /// light theme
   static const Color textPrimaryBlue = Color(0xff051027);
@@ -16,8 +19,9 @@ class ColorsManager {
   static const Color onSurfaceLight = Color(0xff4a4c4e);
   static const Color textFillColor = Color(0xffecf2f9);
   static const Color success = Color(0xff45d863);
-  static const Color error = Color(0xffff345b);
+  static const Color purple = Color(0xffff30cf);
   static const Color info = Color(0xfff06400);
+  static const Color lightBrown = Color(0xff734225);
   static const Color warning = Color(0xfffdc21e);
   static const Color mintGreen = Color(0xff008F8E);
   static const Color lightGrey = Color(0xffEEEEEE);

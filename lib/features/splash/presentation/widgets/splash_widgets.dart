@@ -5,7 +5,7 @@ import '../../../../core/util/resources/appString.dart';
 import '../../../../core/util/resources/assets.gen.dart';
 import '../../../../core/util/resources/colors_manager.dart';
 import '../../../../core/util/resources/constants_manager.dart';
-import '../../../../core/util/widgets/myText.dart';
+import '../../../../core/util/widgets/default_text.dart';
 
 class SplashWidget extends StatelessWidget {
   const SplashWidget({Key? key}) : super(key: key);
@@ -35,7 +35,7 @@ class SplashWidget extends StatelessWidget {
               ),
               verticalSpace(5.h),
 
-              myText(
+              DefaultText(
                 title: AppString.appName,
                 style: Style.headLarge,
                 color: Colors.white,
@@ -43,7 +43,7 @@ class SplashWidget extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
               verticalSpace(5.h),
-              myText(
+              DefaultText(
                 title: AppString.appDescription ,
                 style: Style.medium,
                 color: Colors.white,
