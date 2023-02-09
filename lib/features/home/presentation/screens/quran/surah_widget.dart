@@ -1,7 +1,7 @@
 import 'package:besmkallahom/core/util/resources/assets.gen.dart';
 import 'package:besmkallahom/core/util/resources/colors_manager.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
-import 'package:besmkallahom/core/util/widgets/myText.dart';
+import 'package:besmkallahom/core/util/widgets/default_text.dart';
 import 'package:besmkallahom/features/home/presentation/controller/bloc.dart';
 import 'package:besmkallahom/features/home/presentation/controller/state.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,7 @@ class SurahWidget extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 2,
-                          child: myText(
+                          child: DefaultText(
                             align: TextAlign.end,
                             title: 'الفاتحة',
                             style: Style.medium,
@@ -59,7 +59,7 @@ class SurahWidget extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                myText(
+                                DefaultText(
                                   align: TextAlign.end,
                                   title: 'سورة الفاتحة',
                                   style: Style.medium,
@@ -69,7 +69,7 @@ class SurahWidget extends StatelessWidget {
                                   fontFamily: 'arabic',
                                 ),
                                 verticalSpace(1.h),
-                                myText(
+                                DefaultText(
                                   align: TextAlign.end,
                                   title: 'بسم الله الرحمن الرحيم',
                                   style: Style.medium,
@@ -109,7 +109,7 @@ class SurahWidget extends StatelessWidget {
                                 ),
                                 child: Padding(
                                   padding: designApp,
-                                  child: myText(
+                                  child: DefaultText(
                                     title: 'الحمد لله رب العالمين',
                                     maxLines: 5,
                                     style: Style.large,
@@ -135,7 +135,7 @@ class SurahWidget extends StatelessWidget {
                                     backgroundColor: ColorsManager.mainCard,
                                     child: Padding(
                                       padding: EdgeInsets.only(top: 0.8.h),
-                                      child: myText(
+                                      child: DefaultText(
                                         align: TextAlign.center,
                                         title: '1',
                                         style: Style.medium,

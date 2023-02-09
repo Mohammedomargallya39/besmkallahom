@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
 import '../resources/colors_manager.dart';
 import '../resources/constants_manager.dart';
-import 'myText.dart';
+import 'default_text.dart';
 
 class ProgressDialog extends Dialog {
   final double height;
@@ -30,7 +30,7 @@ class ProgressDialog extends Dialog {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              myText(
+              DefaultText(
                   title: message, align: TextAlign.center, style: Style.medium),
               verticalSpace(5.h),
               LinearProgressIndicator(

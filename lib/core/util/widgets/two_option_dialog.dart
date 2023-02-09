@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
 import '../resources/constants_manager.dart';
 import 'myButton.dart';
-import 'myText.dart';
+import 'default_text.dart';
 
 class TwoOptionsDialog extends Dialog {
   final String message;
@@ -40,7 +40,7 @@ class TwoOptionsDialog extends Dialog {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              myText(
+              DefaultText(
                   title: message, align: TextAlign.center, style: Style.medium, fontWeight: FontWeight.w600,),
               const Spacer(),
               Row(

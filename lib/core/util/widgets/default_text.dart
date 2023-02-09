@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../resources/constants_manager.dart';
 
-class myText extends StatelessWidget {
-  const myText({Key? key,
+class DefaultText extends StatelessWidget {
+  const DefaultText({Key? key,
     required this.title,
     required this.style,
     this.align,
@@ -30,17 +30,20 @@ class myText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title,
-      textAlign: align ?? TextAlign.start,
-      maxLines: maxLines,
-      overflow: maxLines != null? TextOverflow.ellipsis:null,
-      style: getStyle(context).copyWith(
-        color: color ?? getStyle(context).color,
-        fontFamily: fontFamily,
-        letterSpacing: letterSpacing,
-        fontWeight: fontWeight ?? Theme.of(context).textTheme.displayMedium!.fontWeight,
-        fontSize: fontSize
-      ),);
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Text(title,
+        textAlign: align ?? TextAlign.start,
+        maxLines: maxLines,
+        overflow: maxLines != null? TextOverflow.ellipsis:null,
+        style: getStyle(context).copyWith(
+          color: color ?? getStyle(context).color,
+          fontFamily: fontFamily,
+          letterSpacing: letterSpacing,
+          fontWeight: fontWeight ?? Theme.of(context).textTheme.displayMedium!.fontWeight,
+          fontSize: fontSize
+        ),),
+    );
   }
 
   TextStyle getStyle(BuildContext context) {
@@ -65,6 +68,11 @@ class myText extends StatelessWidget {
             .of(context)
             .textTheme
             .displayLarge!;
+      case Style.headSmall:
+        return Theme
+            .of(context)
+            .textTheme
+            .headlineSmall!;
       case Style.headMedium:
         return Theme
             .of(context)

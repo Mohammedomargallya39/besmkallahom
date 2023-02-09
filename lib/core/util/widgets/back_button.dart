@@ -1,3 +1,4 @@
+import 'package:besmkallahom/core/util/resources/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../resources/assets.gen.dart';
@@ -10,11 +11,13 @@ class DefaultBackButton extends StatelessWidget {
 
   final VoidCallback function;
 
+
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap:function,
-      child: SvgPicture.asset(Assets.images.svg.arrowBack)
+      child: SvgPicture.asset(Assets.images.svg.arrowBack,color: ColorsManager.white,)
     );
   }
 }

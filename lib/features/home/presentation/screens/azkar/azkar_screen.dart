@@ -8,8 +8,6 @@ class AzkarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback((_) {});
-    return const Scaffold(
-      body: AzkarWidget(),
-    );
+    return const AzkarWidget();
   }
 }

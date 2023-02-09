@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'package:besmkallahom/core/di/injection.dart';
+import 'package:besmkallahom/core/network/local/cache_helper.dart';
 import 'package:besmkallahom/features/home/presentation/controller/state.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter/cupertino.dart';
@@ -72,6 +74,31 @@ void pickRandomHomeSlah()
   {
     ayahPressedValue = true;
     emit(AyahOnPressedValueState());
+  }
+
+  int currentTasbeehNumber = 0;
+  void changeCurrentTasbeehNumber(){
+    currentTasbeehNumber++;
+    emit(ChangeCurrentTasbeehNumber());
+  }
+
+  int totalTasbeeh = 0 ;
+  void saveTotalTasbeeh() async{
+    totalTasbeeh = totalTasbeeh + currentTasbeehNumber;
+    currentTasbeehNumber = 0;
+    await sl<CacheHelper>().put('totalTasbeeh',totalTasbeeh);
+    getTotalTasbeeh();
+  }
+
+  void getTotalTasbeeh()async{
+    totalTasbeeh = await sl<CacheHelper>().get('totalTasbeeh');
+    emit(GetTotalTasbeeh());
+  }
+
+  int repetitionNum = 3;
+  void changeRepetitionNum(){
+    repetitionNum--;
+    emit(ChangeRepetitionNumber());
   }
 
 }
