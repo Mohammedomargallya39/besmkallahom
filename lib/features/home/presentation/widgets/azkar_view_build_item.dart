@@ -39,6 +39,11 @@ class AzkarViewBuildItem extends StatelessWidget {
                   InkWell(
                     onTap: () async{
                       Clipboard.setData(ClipboardData(text: azkar));
+                      designToastDialog(
+                          context: context,
+                          toast: TOAST.info,
+                          text: 'Text copied',
+                      );
                     },
                     child: Row(
                       children: [

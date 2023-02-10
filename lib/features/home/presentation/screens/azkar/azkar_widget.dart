@@ -28,9 +28,11 @@ class AzkarWidget extends StatelessWidget {
           padding: designApp,
           child: Column(
             children: [
-              const DefaultText(
+              DefaultText(
                 title: AppString.azkar,
-                style: Style.headMedium,
+                style: Style.medium,
+                fontWeight: FontWeight.w600,
+                fontSize: 25.rSp,
               ),
               verticalSpace(8.h),
               Expanded(

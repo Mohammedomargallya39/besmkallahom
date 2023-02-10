@@ -7,6 +7,6 @@ class TasbeehScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return TasbeehWidget();
+    return const TasbeehWidget();
   }
 }
