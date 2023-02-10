@@ -16,7 +16,7 @@ class SurahWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeCubit homeCubit = HomeCubit.get(context);
     int? pressedIndex;
-    return BlocBuilder<HomeCubit,HomeState>(
+    return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         return SafeArea(
           child: Column(
@@ -39,12 +39,10 @@ class SurahWidget extends StatelessWidget {
                         ),
                         const Spacer(),
                         IconButton(
-                            onPressed: ()
-                            {
+                            onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: const Icon(Icons.arrow_forward_ios)
-                        )
+                            icon: const Icon(Icons.arrow_forward_ios))
                       ],
                     ),
                     verticalSpace(5.h),
@@ -53,9 +51,7 @@ class SurahWidget extends StatelessWidget {
                       child: Stack(
                           alignment: AlignmentDirectional.center,
                           children: [
-                            Image.asset(
-                                Assets.images.png.surahCard
-                            ),
+                            Image.asset(Assets.images.png.surahCard),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
@@ -80,8 +76,7 @@ class SurahWidget extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          ]
-                      ),
+                          ]),
                     ),
                   ],
                 ),
@@ -91,22 +86,29 @@ class SurahWidget extends StatelessWidget {
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: ()
-                      {
-                        pressedIndex = index;
-                        homeCubit.ayahPressed();
+                      onTap: () {
+                        if(pressedIndex == index){
+                          homeCubit.ayahPressed(false);
+                        }else{
+                          pressedIndex = index;
+                          homeCubit.ayahPressed(true);
+                        }
+
                       },
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.w, vertical: 3.h),
                         child: Row(
                           children: [
                             Expanded(
-                              flex:10,
+                              flex: 10,
                               child: Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.rSp),
-                                    color: homeCubit.ayahPressedValue == true && pressedIndex == index? ColorsManager.lightMainCard : ColorsManager.lightGrey
-                                ),
+                                    color: homeCubit.ayahPressedValue == true &&
+                                            pressedIndex == index
+                                        ? ColorsManager.lightMainCard
+                                        : ColorsManager.lightGrey),
                                 child: Padding(
                                   padding: designApp,
                                   child: DefaultText(
@@ -116,7 +118,10 @@ class SurahWidget extends StatelessWidget {
                                     fontSize: 18.rSp,
                                     fontWeight: FontWeight.w600,
                                     align: TextAlign.start,
-                                    color: homeCubit.ayahPressedValue == true && pressedIndex == index? ColorsManager.white: ColorsManager.black,
+                                    color: homeCubit.ayahPressedValue == true &&
+                                            pressedIndex == index
+                                        ? ColorsManager.white
+                                        : ColorsManager.black,
                                     fontFamily: 'arabic',
                                   ),
                                 ),
@@ -127,8 +132,11 @@ class SurahWidget extends StatelessWidget {
                               child: Column(
                                 children: [
                                   SvgPicture.asset(
-                                      Assets.images.svg.mark,
-                                      color: homeCubit.ayahPressedValue == true && pressedIndex == index? ColorsManager.warning : ColorsManager.darkGrey,
+                                    Assets.images.svg.mark,
+                                    color: homeCubit.ayahPressedValue == true &&
+                                            pressedIndex == index
+                                        ? ColorsManager.warning
+                                        : ColorsManager.darkGrey,
                                   ),
                                   CircleAvatar(
                                     maxRadius: 15.rSp,
@@ -157,9 +165,54 @@ class SurahWidget extends StatelessWidget {
                   itemCount: 7,
                 ),
               ),
-
-
-
+              if (homeCubit.ayahPressedValue)
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 80.rSp),
+                  width: double.infinity,
+                  height: 10.h,
+                  decoration: BoxDecoration(
+                    color: ColorsManager.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: ColorsManager.darkGrey.withOpacity(0.5),
+                          blurRadius: 15.rSp),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.skip_next,
+                              color: ColorsManager.mainCard,
+                              size: 40.rSp,
+                            )),
+                      ),
+                      Expanded(
+                        child: IconButton(
+                            padding: EdgeInsets.only(bottom: 5.h),
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.play_circle,
+                              color: ColorsManager.mainCard,
+                              size: 70.rSp,
+                            )),
+                      ),
+                      Expanded(
+                        child: IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.skip_previous,
+                              color: ColorsManager.mainCard,
+                              size: 40.rSp,
+                            )),
+                      ),
+                    ],
+                  ),
+                )
             ],
           ),
         );

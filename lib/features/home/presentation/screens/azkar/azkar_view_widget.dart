@@ -15,6 +15,7 @@ class AzkarViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int? pressedIndex;
 
     List<String> appBarBackground = [
       Assets.images.svg.morningAzkarAppBar,
@@ -48,12 +49,17 @@ class AzkarViewWidget extends StatelessWidget {
                   child: ListView.builder(
                     itemBuilder: (context, index) => InkWell(
                       onTap: (){
-                        homeCubit.changeRepetitionNum();
-                        if(homeCubit.repetitionNum == 0){
+                        pressedIndex = index;
+                        homeCubit.changeRepetitionNum(index);
+                        if(homeCubit.azkarPressedValue){
+                        }
+                        if(homeCubit.repetitionNum[index] == 0 ){
                           homeCubit.randomHomeSlah.removeAt(index);
+                          homeCubit.repetitionNum.removeAt(index);
                         }
                       },
                       child: AzkarViewBuildItem(
+                        repetitionNum: homeCubit.repetitionNum[index],
                         azkar: homeCubit.randomHomeSlah[index],
                         azkarColor: azkarColor[azkarIndex],
                       ),
