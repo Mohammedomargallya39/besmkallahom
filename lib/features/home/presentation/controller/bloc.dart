@@ -70,9 +70,9 @@ void pickRandomHomeSlah()
   }
 
   bool ayahPressedValue = false;
-  void ayahPressed()
+  void ayahPressed(bool value)
   {
-    ayahPressedValue = true;
+    ayahPressedValue = value;
     emit(AyahOnPressedValueState());
   }
 
@@ -95,10 +95,17 @@ void pickRandomHomeSlah()
     emit(GetTotalTasbeeh());
   }
 
-  int repetitionNum = 3;
-  void changeRepetitionNum(){
-    repetitionNum--;
+  List<int> repetitionNum = [3,2,4,3,4,3,4,3,4,3];
+  void changeRepetitionNum(int index){
+    repetitionNum[index]--;
     emit(ChangeRepetitionNumber());
+  }
+
+  bool azkarPressedValue = false;
+  void azkarPressed()
+  {
+    ayahPressedValue = true;
+    emit(AyahOnPressedValueState());
   }
 
 }
