@@ -7,9 +7,6 @@ class AzkarViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return AzkarViewWidget(azkarIndex: azkarIndex,);
   }
 }

@@ -9,6 +9,7 @@ import '../../../../../core/util/resources/colors_manager.dart';
 import '../../../../../core/util/resources/constants_manager.dart';
 import '../../../../../core/util/widgets/default_text.dart';
 import '../../controller/bloc.dart';
+import '../azkar/azkar_view_screen.dart';
 
 class HomeWidget extends StatelessWidget {
   HomeWidget({Key? key}) : super(key: key);
@@ -39,45 +40,56 @@ class HomeWidget extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: Stack(
-                          alignment: AlignmentDirectional.centerStart,
-                          children: [
-                            SvgPicture.asset(Assets.images.svg.morningButton),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  right: 20.rSp,
-                                  top: 5.rSp
+                      child: InkWell(
+                        onTap: () {
+                          navigateTo(context, AzkarViewScreen(azkarIndex: 0,));
+                        },
+                        child: Stack(
+                            alignment: AlignmentDirectional.centerStart,
+                            children: [
+                              SvgPicture.asset(Assets.images.svg.morningButton),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    right: 20.rSp,
+                                    top: 5.rSp
+                                ),
+                                child: DefaultText(
+                                  title: AppString.morning,
+                                  style: Style.medium,
+                                  fontWeight: FontWeight.w600,
+                                  color: ColorsManager.white,
+                                  fontSize: 16.rSp,
+                                ),
                               ),
-                              child: DefaultText(
-                                title: AppString.morning,
-                                style: Style.medium,
-                                fontWeight: FontWeight.w600,
-                                color: ColorsManager.white,
-                                fontSize: 16.rSp,
-                              ),
-                            ),
-                          ]),
+                            ]),
+                      ),
                     ),
                     horizontalSpace(5.w),
                     Expanded(
-                      child: Stack(
-                          alignment: AlignmentDirectional.centerStart,
-                          children: [
-                            SvgPicture.asset(Assets.images.svg.eveningButton),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  right: 20.rSp,
-                                  top: 5.rSp
+                      child: InkWell(
+                        onTap: ()
+                        {
+                          navigateTo(context, AzkarViewScreen(azkarIndex: 1,));
+                        },
+                        child: Stack(
+                            alignment: AlignmentDirectional.centerStart,
+                            children: [
+                              SvgPicture.asset(Assets.images.svg.eveningButton),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    right: 20.rSp,
+                                    top: 5.rSp
+                                ),
+                                child: DefaultText(
+                                  title: AppString.evening,
+                                  style: Style.medium,
+                                  fontWeight: FontWeight.w600,
+                                  color: ColorsManager.white,
+                                  fontSize: 16.rSp,
+                                ),
                               ),
-                              child: DefaultText(
-                                title: AppString.evening,
-                                style: Style.medium,
-                                fontWeight: FontWeight.w600,
-                                color: ColorsManager.white,
-                                fontSize: 16.rSp,
-                              ),
-                            ),
-                          ]),
+                            ]),
+                      ),
                     ),
                   ],
                 ),
