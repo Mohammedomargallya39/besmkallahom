@@ -148,8 +148,38 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/evening_azkar_appbar.svg
   String get eveningAzkarAppBar => 'assets/images/svg/evening_azkar_appbar.svg';
 
+  /// File path: assets/images/svg/elasr.svg
+  String get elasr => 'assets/images/svg/elasr.svg';
+
+  /// File path: assets/images/svg/eldhohr.svg
+  String get eldhohr => 'assets/images/svg/eldhohr.svg';
+
+  /// File path: assets/images/svg/eleshaa.svg
+  String get eleshaa => 'assets/images/svg/eleshaa.svg';
+
+  /// File path: assets/images/svg/elfagr.svg
+  String get elfagr => 'assets/images/svg/elfagr.svg';
+
+  /// File path: assets/images/svg/elmaghrb.svg
+  String get elmaghrb => 'assets/images/svg/elmaghrb.svg';
+
+  /// File path: assets/images/svg/elsalah_time_appbar_background.svg
+  String get elsalahTimeAppBar => 'assets/images/svg/elsalah_time_appbar_background.svg';
+
+  /// File path: assets/images/svg/elsalah_time_button.svg
+  String get elsalahTimeButton=> 'assets/images/svg/elsalah_time_button.svg';
+
   /// File path: assets/images/svg/slah
   String get slah => 'assets/images/svg/slah.svg';
+
+  /// File path: assets/images/svg/alarm_true.svg
+  String get alarmTrue => 'assets/images/svg/alarm_true.svg';
+
+  /// File path: assets/images/svg/alarm_false.svg
+  String get alarmFalse => 'assets/images/svg/alarm_false.svg';
+
+  /// File path: assets/images/svg/salah_zekr.svg
+  String get salahZekr => 'assets/images/svg/salah_zekr.svg';
 
   /// File path: assets/images/svg/quran_card
   String get quranCard => 'assets/images/svg/quran_card.svg';
