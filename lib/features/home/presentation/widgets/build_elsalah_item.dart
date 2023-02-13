@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class BuildElsalahItem extends StatelessWidget {
-   BuildElsalahItem({Key? key,required this.elsalahImage,required this.elsalah}) : super(key: key);
+   BuildElsalahItem({Key? key,required this.elsalahImage,required this.elsalah, required this.indexImage}) : super(key: key);
 
 
   String elsalahImage;
   String elsalah;
+  int indexImage;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,24 @@ class BuildElsalahItem extends StatelessWidget {
         Stack(
           alignment: AlignmentDirectional.bottomCenter,
           children: [
-            SvgPicture.asset(elsalahImage),
+            if(indexImage == 4)
+              SizedBox(
+                height: 12.h,
+                width: 25.w,
+                child: Image.asset(
+                  fit: BoxFit.cover,
+                  elsalahImage,
+                ),
+              ),
+            if(indexImage != 4)
+              SizedBox(
+                height: 12.h,
+                width: 25.w,
+                child: SvgPicture.asset(
+                  fit: BoxFit.cover,
+                    elsalahImage,
+                ),
+              ),
             const DefaultText(title: '05:00', style: Style.small,color: ColorsManager.white,)
           ],
         ),

@@ -22,7 +22,7 @@ class ElsalahTimeWidget extends StatelessWidget {
       Assets.images.svg.elfagr,
       Assets.images.svg.eldhohr,
       Assets.images.svg.elasr,
-      Assets.images.svg.elmaghrb,
+      Assets.images.png.elmaghrb,
       Assets.images.svg.eleshaa,
     ];
 
@@ -75,6 +75,7 @@ class ElsalahTimeWidget extends StatelessWidget {
                             (index) => BuildElsalahItem(
                                   elsalahImage: elsalahImages[index],
                                   elsalah: elsalah[index],
+                                  indexImage: index,
                                 )),
                       ),
                     ),

@@ -71,8 +71,11 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/surah_card
   String get surahCard => 'assets/images/png/surah_card.png';
 
+  /// File path: assets/images/png/elmaghrb.png
+  String get elmaghrb => 'assets/images/png/elmaghrb.png';
+
   /// List of all assets
-  List<String> get values => [surahCard,];
+  List<String> get values => [surahCard,elmaghrb];
 }
 
 ///SVG
@@ -159,9 +162,6 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/elfagr.svg
   String get elfagr => 'assets/images/svg/elfagr.svg';
-
-  /// File path: assets/images/svg/elmaghrb.svg
-  String get elmaghrb => 'assets/images/svg/elmaghrb.svg';
 
   /// File path: assets/images/svg/elsalah_time_appbar_background.svg
   String get elsalahTimeAppBar => 'assets/images/svg/elsalah_time_appbar_background.svg';
