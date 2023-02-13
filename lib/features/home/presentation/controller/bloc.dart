@@ -108,4 +108,11 @@ void pickRandomHomeSlah()
     emit(AyahOnPressedValueState());
   }
 
+  bool alarmIcon = false;
+
+  void changAlarm() {
+    alarmIcon = !alarmIcon;
+    emit(AlarmChangeState());
+  }
+
 }

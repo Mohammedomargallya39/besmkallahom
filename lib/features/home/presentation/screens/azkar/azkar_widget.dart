@@ -5,6 +5,7 @@ import 'package:besmkallahom/core/util/resources/constants_manager.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
 import 'package:besmkallahom/core/util/widgets/default_text.dart';
 import 'package:besmkallahom/features/home/presentation/screens/azkar/azkar_view_screen.dart';
+import 'package:besmkallahom/features/home/presentation/screens/azkar/elsalah_time_screen.dart';
 import 'package:besmkallahom/features/home/presentation/widgets/azkar_build_item.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,7 @@ class AzkarWidget extends StatelessWidget {
       Assets.images.svg.azkarElmasged,
       Assets.images.svg.azkarElnoom,
       Assets.images.svg.azkarElsalah,
+      Assets.images.svg.elsalahTimeButton,
     ];
 
     return Scaffold(
@@ -37,15 +39,20 @@ class AzkarWidget extends StatelessWidget {
               verticalSpace(8.h),
               Expanded(
                 child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) => InkWell(
                     onTap: (){
-                      navigateTo(context, AzkarViewScreen(azkarIndex: index,));
+                      if(index == 5){
+                        navigateTo(context, const ElsalahTimeScreen());
+                      }else{
+                        navigateTo(context, AzkarViewScreen(azkarIndex: index,));
+                      }
                     },
                     child: AzkarBuildItem(
                       itemBackground: itemBackground[index],
                     ),
                   ),
-                  itemCount: itemBackground.length,
+                  itemCount:6,
                 ),
               )
             ],

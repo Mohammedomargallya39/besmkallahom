@@ -15,5 +15,13 @@ class AppString {
   static const totalTasbeeh = 'مجموع التسبيحات';
   static const copy = 'نسخ';
   static const repeat = 'عدد التكرار';
+  static const elsalahAlarm = 'تفعيل تنبيه مواقيت الصلاة';
+  static const elfagr = 'الفجر';
+  static const eldoha = 'الضحي';
+  static const eldhohr = 'الظهر';
+  static const elasr = 'العصر';
+  static const elmaghrb = 'المغرب';
+  static const eleshaa = 'العشاء';
+
 
 }

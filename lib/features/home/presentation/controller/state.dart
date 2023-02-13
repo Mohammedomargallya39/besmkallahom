@@ -11,3 +11,4 @@ class ChangeCurrentTasbeehNumber extends HomeState {}
 class ChangeRepetitionNumber extends HomeState {}
 class ResetCurrentTasbeehNumber extends HomeState {}
 class GetTotalTasbeeh extends HomeState {}
+class AlarmChangeState extends HomeState {}

@@ -22,7 +22,7 @@ PreferredSizeWidget defaultAppBar({required BuildContext context,required String
               Navigator.pop(context);
             },
             child: SvgPicture.asset(
-              Assets.images.svg.arrowBack,
+              Assets.images.svg.backIcon,
             ),
           ),
         ),
