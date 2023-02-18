@@ -35,6 +35,7 @@ class ColorsManager {
   static const Color green = Color(0xff0E5E6F);
   static const Color mainCard = Color.fromARGB(255, 92, 28, 160);
   static const Color lightMainCard = Color.fromARGB(255, 163, 94, 242);
+  static const Color buttonAhadeth = Color.fromARGB(255, 56, 92, 164);
 
 
   ///Main Colors

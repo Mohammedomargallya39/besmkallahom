@@ -1,4 +1,5 @@
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
+import 'package:besmkallahom/features/home/presentation/screens/home/ahadeth_screen.dart';
 import 'package:besmkallahom/features/home/presentation/screens/tasbeeh/tasbeeh_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,6 +33,8 @@ class HomeWidget extends StatelessWidget {
                   style: Style.medium,
                   fontWeight: FontWeight.w600,
                   fontSize: 25.rSp,
+                  fontFamily: 'arabic',
+
                 ),
                 verticalSpace(2.h,),
                 SvgPicture.asset(Assets.images.svg.icon),
@@ -43,24 +46,7 @@ class HomeWidget extends StatelessWidget {
                         onTap: () {
                           navigateTo(context, AzkarViewScreen(azkarIndex: 0,));
                         },
-                        child: Stack(
-                            alignment: AlignmentDirectional.centerStart,
-                            children: [
-                              SvgPicture.asset(Assets.images.svg.morningButton),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    right: 20.rSp,
-                                    top: 5.rSp
-                                ),
-                                child: DefaultText(
-                                  title: AppString.morning,
-                                  style: Style.medium,
-                                  fontWeight: FontWeight.w600,
-                                  color: ColorsManager.white,
-                                  fontSize: 16.rSp,
-                                ),
-                              ),
-                            ]),
+                        child: SvgPicture.asset(Assets.images.svg.morningButton),
                       ),
                     ),
                     horizontalSpace(5.w),
@@ -70,51 +56,32 @@ class HomeWidget extends StatelessWidget {
                         {
                           navigateTo(context, AzkarViewScreen(azkarIndex: 1,));
                         },
-                        child: Stack(
-                            alignment: AlignmentDirectional.centerStart,
-                            children: [
-                              SvgPicture.asset(Assets.images.svg.eveningButton),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    right: 20.rSp,
-                                    top: 5.rSp
-                                ),
-                                child: DefaultText(
-                                  title: AppString.evening,
-                                  style: Style.medium,
-                                  fontWeight: FontWeight.w600,
-                                  color: ColorsManager.white,
-                                  fontSize: 16.rSp,
-                                ),
-                              ),
-                            ]),
+                        child: SvgPicture.asset(Assets.images.svg.eveningButton),
                       ),
                     ),
                   ],
                 ),
                 verticalSpace(1.h,),
-                InkWell(
-                  onTap: (){
-                    navigateTo(context, const TasbeehScreen());
-                  },
-                  child: Stack(
-                      alignment: AlignmentDirectional.centerStart,
-                      children: [
-                        SvgPicture.asset(Assets.images.svg.tasbeh),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              right: 20.rSp,
-                              top: 5.rSp
-                          ),
-                          child: DefaultText(
-                            title: AppString.tasbeh,
-                            style: Style.medium,
-                            fontWeight: FontWeight.w600,
-                            color: ColorsManager.white,
-                            fontSize: 16.rSp,
-                          ),
-                        ),
-                      ]),
+                Row(
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: (){
+                          navigateTo(context, const AhadethScreen());
+                        },
+                        child: SvgPicture.asset(Assets.images.svg.ahadeth),
+                      ),
+                    ),
+                    horizontalSpace(5.w),
+                    Expanded(
+                      child: InkWell(
+                        onTap: (){
+                          navigateTo(context, const TasbeehScreen());
+                        },
+                        child: SvgPicture.asset(Assets.images.svg.tasbeh),
+                      ),
+                    ),
+                  ],
                 ),
                 verticalSpace(2.h,),
                 Stack(
