@@ -1,4 +1,3 @@
-import 'package:besmkallahom/core/util/resources/assets.gen.dart';
 import 'package:besmkallahom/core/util/resources/colors_manager.dart';
 import 'package:besmkallahom/core/util/resources/constants_manager.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
@@ -7,9 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AzkarBuildItem extends StatelessWidget {
-  AzkarBuildItem({Key? key,required this.itemBackground}) : super(key: key);
+  AzkarBuildItem({Key? key, this.itemBackground, this.title}) : super(key: key);
 
-  String itemBackground;
+  String? itemBackground;
+  String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +17,24 @@ class AzkarBuildItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 15.0.rSp),
       child: Container(
         width: double.infinity,
-        height: 8.h,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.rSp)
+            borderRadius: BorderRadius.circular(10.rSp),
+            color: itemBackground == null ? ColorsManager.buttonAhadeth : Colors.transparent,
+
         ),
-        child: SvgPicture.asset(itemBackground)
+        child: itemBackground != null ? SvgPicture.asset(itemBackground!) : Center(
+          child: Padding(
+            padding: EdgeInsets.all(10.rSp),
+            child: DefaultText(
+                title: title!,
+                style: Style.medium,
+                color: ColorsManager.white,
+                fontSize: 18.rSp,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'arabic',
+            ),
+          ),
+        )
         ),
       );
 

@@ -1,9 +1,17 @@
 import 'package:besmkallahom/core/util/resources/assets.gen.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
+import 'package:besmkallahom/core/util/widgets/default_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-PreferredSizeWidget defaultAppBar({required BuildContext context,required String appBarBackground,}){
+import '../resources/colors_manager.dart';
+import '../resources/constants_manager.dart';
+
+PreferredSizeWidget defaultAppBar({
+  required BuildContext context,
+  required String appBarBackground,
+  String ? title,
+}){
   return AppBar(
     automaticallyImplyLeading: false,
     title: Stack(
@@ -11,8 +19,24 @@ PreferredSizeWidget defaultAppBar({required BuildContext context,required String
       children: [
         SizedBox(
           width: double.infinity,
-          child: SvgPicture.asset(
-              appBarBackground,
+          child: Stack(
+            alignment: AlignmentDirectional.centerEnd,
+            children: [
+              SvgPicture.asset(
+                appBarBackground,
+              ),
+              if(title != null)
+              Padding(
+                padding: EdgeInsets.only(right: 10.w),
+                child: DefaultText(
+                  title: title,
+                  style: Style.medium,
+                  color: ColorsManager.white,
+                  fontSize: 18.rSp,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ]
           ),
         ),
         Padding(

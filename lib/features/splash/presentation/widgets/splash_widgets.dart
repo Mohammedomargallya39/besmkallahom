@@ -41,6 +41,8 @@ class SplashWidget extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 50.rSp,
                 fontWeight: FontWeight.w600,
+                fontFamily: 'arabic',
+
               ),
               verticalSpace(5.h),
               DefaultText(

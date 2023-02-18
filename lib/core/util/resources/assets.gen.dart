@@ -112,6 +112,18 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/tasbeh
   String get tasbeh => 'assets/images/svg/tasbeh.svg';
 
+  /// File path: assets/images/svg/ahadeth
+  String get ahadeth => 'assets/images/svg/ahadeth.svg';
+
+  /// File path: assets/images/svg/appbar_hadeth
+  String get appbar_hadeth => 'assets/images/svg/appbar_hadeth.svg';
+
+  /// File path: assets/images/svg/hadeth_background
+  String get app_background => 'assets/images/svg/hadeth_background.svg';
+
+  /// File path: assets/images/svg/appbar_hadeth_details
+  String get appbar_hadeth_details => 'assets/images/svg/appbar_hadeth_details.svg';
+
   /// File path: assets/images/svg/tasbeeh_counter_button.svg
   String get tasbehCounterButton => 'assets/images/svg/tasbeeh_counter_button.svg';
 
@@ -201,7 +213,8 @@ class $AssetsImagesSvgGen {
         tasbeh,
         slah,
         quranCard,
-        mark
+        mark,
+        ahadeth
       ];
 }
 

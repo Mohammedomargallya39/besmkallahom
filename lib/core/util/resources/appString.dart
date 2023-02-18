@@ -11,6 +11,7 @@ class AppString {
   static const azkarElnoom = 'أذكار النوم';
   static const azkarElsalah = 'أذكار الصلاة';
   static const tasbeh = 'تسبيح';
+  static const ahadeth = 'أحاديث';
   static const quran = 'القرآن الكريم';
   static const totalTasbeeh = 'مجموع التسبيحات';
   static const copy = 'نسخ';
@@ -22,6 +23,11 @@ class AppString {
   static const elasr = 'العصر';
   static const elmaghrb = 'المغرب';
   static const eleshaa = 'العشاء';
+  static const elbokhary = 'صحيح البخاري';
+  static const moslem = 'صحيح مسلم';
+  static const altormozy = 'الترمذي';
+  static const ebnMaga = 'ابن ماجه';
+  static const aboDawood = 'ابو داوود';
 
 
 }
