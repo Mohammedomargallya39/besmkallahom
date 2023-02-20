@@ -1,6 +1,7 @@
+import 'package:besmkallahom/core/util/cubit/cubit.dart';
+import 'package:besmkallahom/core/util/cubit/state.dart';
 import 'package:besmkallahom/core/util/resources/appString.dart';
 import 'package:besmkallahom/core/util/resources/assets.gen.dart';
-import 'package:besmkallahom/core/util/resources/colors_manager.dart';
 import 'package:besmkallahom/core/util/resources/constants_manager.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
 import 'package:besmkallahom/core/util/widgets/default_app_bar.dart';
@@ -11,6 +12,8 @@ import 'package:besmkallahom/features/home/presentation/widgets/build_elsalah_it
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../../core/di/injection.dart';
+import '../../../../../core/network/local/cache_helper.dart';
 
 class ElsalahTimeWidget extends StatelessWidget {
   const ElsalahTimeWidget({Key? key}) : super(key: key);
@@ -35,10 +38,21 @@ class ElsalahTimeWidget extends StatelessWidget {
       AppString.eleshaa,
     ];
 
-
     HomeCubit homeCubit = HomeCubit.get(context);
+    AppBloc appBloc = AppBloc.get(context);
+
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
+        List<String> timers=
+        [
+          homeCubit.adanResult![DateTime.now().day -1].timings.fajr.substring(0,5),
+          homeCubit.adanResult![DateTime.now().day -1].timings.sunrise.substring(0,5),
+          homeCubit.adanResult![DateTime.now().day -1].timings.dhuhr.substring(0,5),
+          homeCubit.adanResult![DateTime.now().day -1].timings.asr.substring(0,5),
+          homeCubit.adanResult![DateTime.now().day -1].timings.maghrib.substring(0,5),
+          homeCubit.adanResult![DateTime.now().day -1].timings.ishaa.substring(0,5),
+        ];
+
         return Scaffold(
           appBar: defaultAppBar(
               context: context,
@@ -47,47 +61,66 @@ class ElsalahTimeWidget extends StatelessWidget {
             padding: designApp,
             child: Directionality(
               textDirection: TextDirection.rtl,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+              child: BlocBuilder<AppBloc,AppState>(
+                builder: (context, state) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const DefaultText(
-                          title: AppString.elsalahAlarm, style: Style.small),
-                      const Spacer(),
-                      InkWell(
-                        onTap: () {
-                          homeCubit.changAlarm();
-                        },
-                        child: SvgPicture.asset(homeCubit.alarmIcon
-                            ? Assets.images.svg.alarmTrue
-                            : Assets.images.svg.alarmFalse),
-                      )
-                    ],
-                  ),
-                  verticalSpace(1.h),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.all(15.rSp),
-                      child: GridView.count(
-                        crossAxisCount: 2,
-                        physics: const BouncingScrollPhysics(),
-                        children: List.generate(
-                            elsalahImages.length,
-                            (index) => BuildElsalahItem(
-                                  elsalahImage: elsalahImages[index],
-                                  elsalah: elsalah[index],
-                                  indexImage: index,
-                                  timer: '05:00',
-                                )),
+                      if(appBloc.isAppConnected == true)
+                        Row(
+                        children: [
+                          const DefaultText(
+                              title: AppString.elsalahAlarm, style: Style.small),
+                          const Spacer(),
+                          InkWell(
+                            onTap: () {
+                              homeCubit.changAlarm();
+                            },
+                            child: SvgPicture.asset(homeCubit.alarmIcon
+                                ? Assets.images.svg.alarmTrue
+                                : Assets.images.svg.alarmFalse),
+                          )
+                        ],
                       ),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional.center,
-                    child: SvgPicture.asset(Assets.images.svg.salahZekr),
-                  ),
-                ],
+                      verticalSpace(1.h),
+                      if(appBloc.isAppConnected == true)
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(15.rSp),
+                            child: GridView.count(
+                              crossAxisCount: 2,
+                              physics: const BouncingScrollPhysics(),
+                              children: List.generate(
+                                  elsalahImages.length,
+                                      (index) => BuildElsalahItem(
+                                    elsalahImage: elsalahImages[index],
+                                    elsalah: elsalah[index],
+                                    indexImage: index,
+                                    timer: timers[index],
+                                  )),
+                            ),
+                          ),
+                        ),
+                      if(appBloc.isAppConnected == false)
+                        Expanded(
+                          child: Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(15.rSp),
+                              child: Image.asset(
+                                Assets.images.png.network_error,
+                                height: 100.h,
+                                width: 100.w,
+                              ),
+                            ),
+                          ),
+                        ),
+                      Align(
+                        alignment: AlignmentDirectional.center,
+                        child: SvgPicture.asset(Assets.images.svg.salahZekr),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
