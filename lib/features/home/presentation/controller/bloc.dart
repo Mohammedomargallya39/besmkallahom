@@ -6,6 +6,8 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../domain/entities/adan_entity.dart';
+import '../../domain/usecase/adan_usecase.dart';
 import '../screens/azkar/azkar_screen.dart';
 import '../screens/donitation/donition_screen.dart';
 import '../screens/home/home_screen.dart';
@@ -14,7 +16,13 @@ import '../screens/quran/quran_screen.dart';
 
 class HomeCubit extends Cubit<HomeState> {
 
-  HomeCubit() : super(Empty());
+  final AdanUseCase _adanUseCase;
+
+
+  HomeCubit({
+    required AdanUseCase adanUseCase,
+}) : _adanUseCase = adanUseCase
+  ,super(Empty());
 
   static HomeCubit get(context) => BlocProvider.of(context);
 
@@ -255,5 +263,41 @@ void pickRandomHomeSlah()
     alarmIcon = !alarmIcon;
     emit(AlarmChangeState());
   }
+
+  List<AdanEntity>? adanResult;
+  void adan({
+    required String year,
+    required String month,
+    required String day,
+    required String lat,
+    required String lng,
+    required String method,
+})async
+  {
+    emit(AdanLoadingState());
+    
+    final adan = await _adanUseCase(
+      AdanParams(
+        year: year,
+        month: month,
+        day: day,
+        lat: lat,
+        lng: lng, 
+        method: method,));
+    
+    adan.fold((failure) {
+      emit(AdanErrorState());
+    }, (data)
+    {
+      emit(AdanSuccessState());
+      adanResult = data;
+    });
+
+  }
+
+
+
+
+
 
 }

@@ -1,5 +1,9 @@
+import 'package:besmkallahom/features/home/date/data_source/home_remote_date_source.dart';
+import 'package:besmkallahom/features/home/domain/repository/home_base_repository.dart';
+import 'package:besmkallahom/features/home/domain/usecase/adan_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../features/home/date/repository/home_repository.dart';
 import '../../features/home/presentation/controller/bloc.dart';
 import '/core/network/local/cache_helper.dart';
 import '/core/network/remote/dio_helper.dart';
@@ -15,7 +19,9 @@ Future<void> init() async {
   );
 
   sl.registerLazySingleton(
-        () => HomeCubit(),
+        () => HomeCubit(
+          adanUseCase: sl(),
+        ),
   );
 
   sl.registerLazySingleton<Repository>(
@@ -27,11 +33,21 @@ Future<void> init() async {
 
   // Repository
 
+  sl.registerLazySingleton<HomeBaseRepository>(
+        () => HomeRepoImplementation(remoteDataSource: sl()),
+  );
+
   // Use cases
+  sl.registerLazySingleton(() => AdanUseCase(sl()));
+
 
 
 
   //Data sources
+
+  sl.registerLazySingleton<HomeBaseRemoteDataSource>(
+        () => HomeRemoteDataSourceImpl(dioHelper: sl()),
+  );
 
   // Core
   sl.registerLazySingleton<DioHelper>(

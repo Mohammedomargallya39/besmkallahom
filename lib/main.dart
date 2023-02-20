@@ -20,7 +20,6 @@ void main() async
   Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
   currentLat = position.latitude;
   currentLng = position.longitude;
-
   await di.init();
   bool isRtl = false;
   String translation = await rootBundle.loadString('assets/translations/${isRtl ? 'ar' : 'en'}.json');
@@ -62,7 +61,8 @@ class MyApp extends StatelessWidget {
             ..connectivityListener(),
         ),
         BlocProvider(
-          create: (BuildContext context) => sl<HomeCubit>()),
+          create: (BuildContext context) => sl<HomeCubit>()..adan(year: DateTime.now().year.toString(), month: DateTime.now().month.toString(), day: DateTime.now().day.toString(), lat: currentLat.toString(), lng: currentLng.toString(), method: '5')
+        ),
       ],
       child: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {

@@ -1,5 +1,6 @@
 import 'package:meta/meta.dart';
 
+
 @immutable
 abstract class HomeState{}
 
@@ -16,3 +17,7 @@ class ChangeRepetitionSalahNumber extends HomeState {}
 class ResetCurrentTasbeehNumber extends HomeState {}
 class GetTotalTasbeeh extends HomeState {}
 class AlarmChangeState extends HomeState {}
+
+class AdanLoadingState extends HomeState{}
+class AdanErrorState extends HomeState{}
+class AdanSuccessState extends HomeState{}
