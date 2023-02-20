@@ -34,6 +34,8 @@ class ElsalahTimeWidget extends StatelessWidget {
       AppString.elmaghrb,
       AppString.eleshaa,
     ];
+
+
     HomeCubit homeCubit = HomeCubit.get(context);
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
@@ -76,6 +78,7 @@ class ElsalahTimeWidget extends StatelessWidget {
                                   elsalahImage: elsalahImages[index],
                                   elsalah: elsalah[index],
                                   indexImage: index,
+                                  timer: '05:00',
                                 )),
                       ),
                     ),

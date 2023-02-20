@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 class SurahScreen extends StatelessWidget {
-  const SurahScreen({Key? key}) : super(key: key);
+  SurahScreen({Key? key, required this.surahNum}) : super(key: key);
+
+  int surahNum;
 
   @override
   Widget build(BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback((_) {});
-    return const Scaffold(
+    return Scaffold(
       body: Directionality(
         textDirection: TextDirection.rtl,
-          child: SurahWidget()
+          child: SurahWidget(surahNum: surahNum,)
       ),
     );
   }

@@ -71,6 +71,10 @@ dependencies:
   geolocator: ^9.0.2
   # Icons
   font_awesome_flutter: ^10.2.1
+  # quran
+  quran: ^1.2.0
+
+
 
 
 dev_dependencies:

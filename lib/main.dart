@@ -1,17 +1,25 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
 import '/core/di/injection.dart' as di;
 import 'core/di/injection.dart';
 import 'core/util/cubit/cubit.dart';
 import 'core/util/cubit/state.dart';
 import 'core/util/resources/bloc_observer_manager.dart';
+import 'core/util/resources/constants_manager.dart';
 import 'features/home/presentation/controller/bloc.dart';
 import 'features/splash/presentation/screens/splash_screen.dart';
 
 void main() async
 {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Geolocator.requestPermission();
+  Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  currentLat = position.latitude;
+  currentLng = position.longitude;
 
   await di.init();
   bool isRtl = false;

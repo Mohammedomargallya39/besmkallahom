@@ -8,7 +8,11 @@ class ChangeBottomNavBarState extends HomeState {}
 class HideCardValueState extends HomeState {}
 class AyahOnPressedValueState extends HomeState {}
 class ChangeCurrentTasbeehNumber extends HomeState {}
-class ChangeRepetitionNumber extends HomeState {}
+class ChangeRepetitionSleepingNumber extends HomeState {}
+class ChangeRepetitionMorningNumber extends HomeState {}
+class ChangeRepetitionEveningNumber extends HomeState {}
+class ChangeRepetitionMasgedNumber extends HomeState {}
+class ChangeRepetitionSalahNumber extends HomeState {}
 class ResetCurrentTasbeehNumber extends HomeState {}
 class GetTotalTasbeeh extends HomeState {}
 class AlarmChangeState extends HomeState {}
