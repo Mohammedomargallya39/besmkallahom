@@ -11,6 +11,8 @@ import 'package:besmkallahom/features/home/presentation/screens/quran/surah_scre
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quran/quran.dart' as quran;
+
 
 class QuranWidget extends StatelessWidget {
   const QuranWidget({Key? key}) : super(key: key);
@@ -98,7 +100,7 @@ class QuranWidget extends StatelessWidget {
                                   return InkWell(
                                     onTap: ()
                                     {
-                                      navigateTo(context, const SurahScreen());
+                                      navigateTo(context, SurahScreen(surahNum: index+1,));
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(vertical: 20.rSp, horizontal: 40.rSp),
@@ -107,7 +109,7 @@ class QuranWidget extends StatelessWidget {
                                           Row(
                                             children: [
                                               DefaultText(
-                                                title: 'الفاتحة',
+                                                title: quran.getSurahNameArabic(index+1),
                                                 style: Style.large,
                                                 fontSize: 20.rSp,
                                                 fontWeight: FontWeight.w600,
@@ -121,7 +123,7 @@ class QuranWidget extends StatelessWidget {
                                                   padding: EdgeInsets.only(top: 0.8.h),
                                                   child: DefaultText(
                                                     align: TextAlign.center,
-                                                    title: '1',
+                                                    title: '${index+1}',
                                                     style: Style.medium,
                                                     color: ColorsManager.white,
                                                     fontWeight: FontWeight.w600,

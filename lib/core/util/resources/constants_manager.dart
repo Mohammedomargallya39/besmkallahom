@@ -262,4 +262,5 @@ String displayTranslatedText({
     AppBloc.get(context).isArabic ? ar : en;
 
 
-
+double? currentLat;
+double? currentLng;

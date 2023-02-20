@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class BuildElsalahItem extends StatelessWidget {
-   BuildElsalahItem({Key? key,required this.elsalahImage,required this.elsalah, required this.indexImage}) : super(key: key);
+   BuildElsalahItem({Key? key,required this.elsalahImage,required this.elsalah, required this.indexImage, required this.timer}) : super(key: key);
 
 
   String elsalahImage;
   String elsalah;
   int indexImage;
+  String timer;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class BuildElsalahItem extends StatelessWidget {
                     elsalahImage,
                 ),
               ),
-            const DefaultText(title: '05:00', style: Style.small,color: ColorsManager.white,)
+            DefaultText(title: timer, style: Style.small,color: ColorsManager.white,)
           ],
         ),
         verticalSpace(1.h),
