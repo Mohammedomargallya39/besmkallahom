@@ -1,3 +1,4 @@
+import 'package:besmkallahom/core/network/local/cache_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,8 +21,16 @@ void main() async
   Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
   currentLat = position.latitude;
   currentLng = position.longitude;
-
   await di.init();
+  salahTimes = [
+    await sl<CacheHelper>().get('fajr'),
+    await sl<CacheHelper>().get('sunrise'),
+    await sl<CacheHelper>().get('dhohr'),
+    await sl<CacheHelper>().get('asr'),
+    await sl<CacheHelper>().get('maghreb'),
+    await sl<CacheHelper>().get('eshaa'),
+  ];
+  debugPrintFullText(salahTimes.toString());
   bool isRtl = false;
   String translation = await rootBundle.loadString('assets/translations/${isRtl ? 'ar' : 'en'}.json');
   Bloc.observer = MyBlocObserver();
