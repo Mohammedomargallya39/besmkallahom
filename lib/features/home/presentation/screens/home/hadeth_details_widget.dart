@@ -35,22 +35,9 @@ class HadethDetailsWidget extends StatelessWidget {
                 appBarBackground: Assets.images.svg.appbar_hadeth_details,
                 title: title,
               ),
-              verticalSpace(5.h),
-              if(appBloc.isAppConnected == false)
-              Expanded(
-                  child: Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(15.rSp),
-                      child: Image.asset(
-                        Assets.images.png.network_error,
-                        height: 100.h,
-                        width: 100.w,
-                      ),
-                    ),
-                  ),
-                ),
               if(homeCubit.hadithResult != null)
               Expanded(
+                flex: 11,
                   child: Padding(
                     padding: designApp,
                     child: ListView.builder(
@@ -63,6 +50,8 @@ class HadethDetailsWidget extends StatelessWidget {
                     ),
                   )
               ),
+              if(homeCubit.hadithResult == null)
+              const Spacer(),
               Padding(
                 padding: EdgeInsetsDirectional.only(bottom: 2.h),
                 child: Row(
