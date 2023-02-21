@@ -20,6 +20,7 @@ void main() async
   Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
   currentLat = position.latitude;
   currentLng = position.longitude;
+
   await di.init();
   bool isRtl = false;
   String translation = await rootBundle.loadString('assets/translations/${isRtl ? 'ar' : 'en'}.json');

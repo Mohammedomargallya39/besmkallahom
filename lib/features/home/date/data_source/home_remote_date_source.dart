@@ -1,3 +1,4 @@
+import 'package:besmkallahom/features/home/date/models/tafseer_model.dart';
 import 'package:dio/dio.dart';
 import '../../../../core/network/remote/api_endpoints.dart';
 import '../../../../core/network/remote/dio_helper.dart';
@@ -13,6 +14,13 @@ abstract class HomeBaseRemoteDataSource {
     required String lng,
     required String method,
   });
+
+  Future<TafseerModel> tafseer({
+    required int tafseerId,
+    required int surahId,
+    required int ayahId,
+  });
+
 }
 
 class HomeRemoteDataSourceImpl
@@ -47,4 +55,19 @@ class HomeRemoteDataSourceImpl
     return List<AdanModel>.from(
         (f.data['data'] as List).map((e) => AdanModel.fromJson(e)));
   }
+
+  @override
+  Future<TafseerModel> tafseer({
+    required int tafseerId,
+    required int surahId,
+    required int ayahId,
+  }) async {
+    final Response f = await dioHelper.get(
+        base: baseTafseerUrl,
+        url: '$tafseerId/$surahId/$ayahId',
+    );
+    return TafseerModel.fromJson(f.data);
+  }
+
+
 }

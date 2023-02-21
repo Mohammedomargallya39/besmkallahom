@@ -41,18 +41,18 @@ class ElsalahTimeWidget extends StatelessWidget {
     HomeCubit homeCubit = HomeCubit.get(context);
     AppBloc appBloc = AppBloc.get(context);
 
+    List<String> timers=
+    [
+      homeCubit.adanResult![DateTime.now().day -1].timings.fajr.substring(0,5),
+      homeCubit.adanResult![DateTime.now().day -1].timings.sunrise.substring(0,5),
+      homeCubit.adanResult![DateTime.now().day -1].timings.dhuhr.substring(0,5),
+      homeCubit.adanResult![DateTime.now().day -1].timings.asr.substring(0,5),
+      homeCubit.adanResult![DateTime.now().day -1].timings.maghrib.substring(0,5),
+      homeCubit.adanResult![DateTime.now().day -1].timings.ishaa.substring(0,5),
+    ];
+
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        List<String> timers=
-        [
-          homeCubit.adanResult![DateTime.now().day -1].timings.fajr.substring(0,5),
-          homeCubit.adanResult![DateTime.now().day -1].timings.sunrise.substring(0,5),
-          homeCubit.adanResult![DateTime.now().day -1].timings.dhuhr.substring(0,5),
-          homeCubit.adanResult![DateTime.now().day -1].timings.asr.substring(0,5),
-          homeCubit.adanResult![DateTime.now().day -1].timings.maghrib.substring(0,5),
-          homeCubit.adanResult![DateTime.now().day -1].timings.ishaa.substring(0,5),
-        ];
-
         return Scaffold(
           appBar: defaultAppBar(
               context: context,
@@ -66,6 +66,20 @@ class ElsalahTimeWidget extends StatelessWidget {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      if(appBloc.isAppConnected == false)
+                        Expanded(
+                          child: Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(15.rSp),
+                              child: Image.asset(
+                                Assets.images.png.network_error,
+                                height: 100.h,
+                                width: 100.w,
+                              ),
+                            ),
+                          ),
+                        ),
+
                       if(appBloc.isAppConnected == true)
                         Row(
                         children: [
@@ -98,19 +112,6 @@ class ElsalahTimeWidget extends StatelessWidget {
                                     indexImage: index,
                                     timer: timers[index],
                                   )),
-                            ),
-                          ),
-                        ),
-                      if(appBloc.isAppConnected == false)
-                        Expanded(
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(15.rSp),
-                              child: Image.asset(
-                                Assets.images.png.network_error,
-                                height: 100.h,
-                                width: 100.w,
-                              ),
                             ),
                           ),
                         ),

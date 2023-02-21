@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:besmkallahom/core/di/injection.dart';
 import 'package:besmkallahom/core/network/local/cache_helper.dart';
+import 'package:besmkallahom/features/home/domain/entities/tafseer_entity.dart';
 import 'package:besmkallahom/features/home/presentation/controller/state.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/entities/adan_entity.dart';
 import '../../domain/usecase/adan_usecase.dart';
+import '../../domain/usecase/tafseer_usecase.dart';
 import '../screens/azkar/azkar_screen.dart';
 import '../screens/donitation/donition_screen.dart';
 import '../screens/home/home_screen.dart';
@@ -17,12 +19,16 @@ import '../screens/quran/quran_screen.dart';
 class HomeCubit extends Cubit<HomeState> {
 
   final AdanUseCase _adanUseCase;
+  final TafseerUseCase _tafseerUseCase;
 
 
   HomeCubit({
     required AdanUseCase adanUseCase,
-}) : _adanUseCase = adanUseCase
-  ,super(Empty());
+    required TafseerUseCase tafseerUseCase,
+}) :
+        _adanUseCase = adanUseCase,
+        _tafseerUseCase = tafseerUseCase,
+        super(Empty());
 
   static HomeCubit get(context) => BlocProvider.of(context);
 
@@ -272,8 +278,7 @@ void pickRandomHomeSlah()
     required String lat,
     required String lng,
     required String method,
-})async
-  {
+})async {
     emit(AdanLoadingState());
     
     final adan = await _adanUseCase(
@@ -295,7 +300,30 @@ void pickRandomHomeSlah()
 
   }
 
+  TafseerEntity? tafseerResult;
+  void tafseer({
+    required int tafseerId,
+    required int surahId,
+    required int ayahId,
+  })async {
+    emit(TafseerLoadingState());
 
+    final tafseer = await _tafseerUseCase(
+        TafseerParams(
+          tafseerId: tafseerId,
+          surahId: surahId,
+          ayahId: ayahId,
+        ));
+
+    tafseer.fold((failure) {
+      emit(TafseerErrorState());
+    }, (data)
+    {
+      emit(TafseerSuccessState());
+      tafseerResult = data;
+    });
+
+  }
 
 
 

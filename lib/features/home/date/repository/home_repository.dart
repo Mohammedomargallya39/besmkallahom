@@ -2,11 +2,13 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/adan_entity.dart';
+import '../../domain/entities/tafseer_entity.dart';
 import '../../domain/repository/home_base_repository.dart';
 import '../data_source/home_remote_date_source.dart';
 
 
 typedef CallAdan = Future<List<AdanEntity>> Function();
+typedef CallTafseer = Future<TafseerEntity> Function();
 
 class HomeRepoImplementation extends HomeBaseRepository {
   final HomeBaseRemoteDataSource remoteDataSource;
@@ -52,4 +54,38 @@ class HomeRepoImplementation extends HomeBaseRepository {
       );
     });
   }
+
+
+  Future<Either<Failure, TafseerEntity>> fetchTafseer(
+      CallTafseer mainMethod,
+      ) async {
+    try {
+      final tafseerData = await mainMethod();
+      return Right(tafseerData);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(
+        error: e.error,
+        code: e.code,
+        message: e.message,
+      ));
+    }
+  }
+
+  @override
+  Future<Either<Failure, TafseerEntity>> tafseer(
+      {
+        required int tafseerId,
+        required int surahId,
+        required int ayahId,
+      }) async {
+    return await fetchTafseer(()
+    {
+      return remoteDataSource.tafseer(
+        tafseerId: tafseerId,
+        surahId: surahId,
+        ayahId: ayahId,
+      );
+    });
+  }
+
 }

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/error/failures.dart';
 import '../entities/adan_entity.dart';
+import '../entities/tafseer_entity.dart';
 
 abstract class HomeBaseRepository {
   Future<Either<Failure, List<AdanEntity>>> adan({
@@ -11,4 +12,12 @@ abstract class HomeBaseRepository {
     required String lng,
     required String method,
   });
+
+  Future<Either<Failure, TafseerEntity>> tafseer({
+    required int tafseerId,
+    required int surahId,
+    required int ayahId,
+  });
+
+
 }
