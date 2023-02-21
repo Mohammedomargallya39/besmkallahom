@@ -3,6 +3,7 @@ import 'package:besmkallahom/core/util/resources/colors_manager.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
 import 'package:besmkallahom/core/util/widgets/default_text.dart';
 import 'package:besmkallahom/core/util/widgets/option_dialog.dart';
+import 'package:besmkallahom/core/util/widgets/tafseer_dialog.dart';
 import 'package:besmkallahom/features/home/presentation/controller/bloc.dart';
 import 'package:besmkallahom/features/home/presentation/controller/state.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,24 @@ class SurahWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeCubit homeCubit = HomeCubit.get(context);
     int? pressedIndex;
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocConsumer<HomeCubit, HomeState>(
+      listener: (context, state) {
+        if(state is TafseerSuccessState)
+        {
+          // designToastDialog(
+          //     context: context,
+          //     toast: TOAST.info,
+          //     text: homeCubit.tafseerResult!.tafseer,
+          // );
+          
+          showDialog(
+              context: context,
+              builder: (context) {
+                return TafseerDialog(tafseer: homeCubit.tafseerResult!.tafseer);
+              },
+          );
+        }
+      },
       builder: (context, state) {
         return SafeArea(
           child: SingleChildScrollView(
@@ -88,20 +106,6 @@ class SurahWidget extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(1.h),
-
-                // Expanded(
-                //   child: Wrap(
-                //     spacing: 0.8,
-                //     runSpacing: 4.0,
-                //     children: List.generate(quran.getVerseCount(surahNum), (index)
-                //     {
-                //       return InkWell(
-                //         child: ,
-                //       );
-                //     }),
-                //   ),
-                // ),
-
                 SizedBox(
                   height: homeCubit.ayahPressedValue ? 50.h : 100.h,
                   child: ListView.builder(

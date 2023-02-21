@@ -4,6 +4,7 @@ import 'package:besmkallahom/features/home/domain/usecase/adan_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/home/date/repository/home_repository.dart';
+import '../../features/home/domain/usecase/hadith_usecase.dart';
 import '../../features/home/domain/usecase/tafseer_usecase.dart';
 import '../../features/home/presentation/controller/bloc.dart';
 import '/core/network/local/cache_helper.dart';
@@ -23,6 +24,7 @@ Future<void> init() async {
         () => HomeCubit(
           adanUseCase: sl(),
           tafseerUseCase: sl(),
+          hadithUseCase: sl(),
         ),
   );
 
@@ -42,6 +44,7 @@ Future<void> init() async {
   // Use cases
   sl.registerLazySingleton(() => AdanUseCase(sl()));
   sl.registerLazySingleton(() => TafseerUseCase(sl()));
+  sl.registerLazySingleton(() => HadithUseCase(sl()));
 
 
 

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/error/failures.dart';
 import '../entities/adan_entity.dart';
+import '../entities/hadith_entity.dart';
 import '../entities/tafseer_entity.dart';
 
 abstract class HomeBaseRepository {
@@ -17,6 +18,11 @@ abstract class HomeBaseRepository {
     required int tafseerId,
     required int surahId,
     required int ayahId,
+  });
+
+  Future<Either<Failure, List<HadithEntity>>> hadith({
+    required String bookName,
+    required int pageNum,
   });
 
 

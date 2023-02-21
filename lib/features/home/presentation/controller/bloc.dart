@@ -8,7 +8,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/entities/adan_entity.dart';
+import '../../domain/entities/hadith_entity.dart';
 import '../../domain/usecase/adan_usecase.dart';
+import '../../domain/usecase/hadith_usecase.dart';
 import '../../domain/usecase/tafseer_usecase.dart';
 import '../screens/azkar/azkar_screen.dart';
 import '../screens/donitation/donition_screen.dart';
@@ -20,14 +22,17 @@ class HomeCubit extends Cubit<HomeState> {
 
   final AdanUseCase _adanUseCase;
   final TafseerUseCase _tafseerUseCase;
+  final HadithUseCase _hadithUseCase;
 
 
   HomeCubit({
     required AdanUseCase adanUseCase,
     required TafseerUseCase tafseerUseCase,
+    required HadithUseCase hadithUseCase,
 }) :
         _adanUseCase = adanUseCase,
         _tafseerUseCase = tafseerUseCase,
+        _hadithUseCase = hadithUseCase,
         super(Empty());
 
   static HomeCubit get(context) => BlocProvider.of(context);
@@ -331,6 +336,53 @@ void pickRandomHomeSlah()
 
   }
 
+  int pageNum = 1;
+  void changeNextPage()
+  {
+    pageNum++;
+    emit(NextPageState());
+  }
+
+  void changePrevPage()
+  {
+    if( pageNum > 1)
+    {
+      pageNum--;
+    }
+    emit(PrevPageState());
+  }
+
+  // final ScrollController scrollController = ScrollController();
+  // void scrollToTop()
+  // {
+  //   scrollController.animateTo(
+  //       0,
+  //       duration: const Duration(milliseconds: 500),
+  //       curve: Curves.easeInOut,
+  //   );
+  //   emit(ScrollTopState());
+  // }
+
+  List<HadithEntity>? hadithResult;
+  void hadith({
+    required int pageNum,
+    required String bookName,
+  })async {
+    emit(HadithLoadingState());
+    final hadith = await _hadithUseCase(
+        HadithParams(
+          pageNum: pageNum,
+          bookName: bookName,
+         ));
+    hadith.fold((failure) {
+      emit(HadithErrorState());
+    }, (data)
+    {
+      emit(HadithSuccessState());
+      hadithResult = data;
+    });
+
+  }
 
 
 
