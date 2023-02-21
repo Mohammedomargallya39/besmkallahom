@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import '../../../../core/network/remote/api_endpoints.dart';
 import '../../../../core/network/remote/dio_helper.dart';
 import '../models/adan_model.dart';
+import '../models/hadith_model.dart';
 
 
 abstract class HomeBaseRemoteDataSource {
@@ -20,6 +21,12 @@ abstract class HomeBaseRemoteDataSource {
     required int surahId,
     required int ayahId,
   });
+
+  Future<List<HadithModel>> hadith({
+    required String bookName,
+    required int pageNum,
+  });
+
 
 }
 
@@ -68,6 +75,26 @@ class HomeRemoteDataSourceImpl
     );
     return TafseerModel.fromJson(f.data);
   }
+
+
+  @override
+  Future<List<HadithModel>> hadith({
+    required String bookName,
+    required int pageNum,
+  }) async {
+    final Response f = await dioHelper.get(
+        base: baseHadithUrl,
+        url: hadithUrl,
+        query: {
+          'apiKey': apiKey,
+          'book': bookName,
+          'page': pageNum,
+        }
+    );
+    return List<HadithModel>.from(
+        (f.data['hadiths']['data'] as List).map((e) => HadithModel.fromJson(e)));
+  }
+
 
 
 }

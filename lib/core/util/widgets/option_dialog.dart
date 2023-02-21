@@ -67,84 +67,92 @@ class OptionsDialog extends Dialog {
               DefaultText(
                   title: message, align: TextAlign.center, style: Style.medium, fontWeight: FontWeight.w600,),
               verticalSpace(2.h),
-              Row(
-                children: [
-                  Expanded(
-                    child: myButton(
-                      onPressed: firstButtonVoidCallback,
-                      text: firstButtonText,
-                      fontSize: 16.rSp,
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: myButton(
+                        onPressed: firstButtonVoidCallback,
+                        text: firstButtonText,
+                        fontSize: 16.rSp,
+                      ),
                     ),
-                  ),
-                  horizontalSpace(2.h),
-                  Expanded(
-                    child: myButton(
-                      onPressed: secondButtonVoidCallback,
-                      text: secondButtonText,
-                      fontSize: 16.rSp,
+                    horizontalSpace(2.w),
+                    Expanded(
+                      child: myButton(
+                        onPressed: secondButtonVoidCallback,
+                        text: secondButtonText,
+                        fontSize: 16.rSp,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               verticalSpace(1.h),
-              Row(
-                children: [
-                  Expanded(
-                    child: myButton(
-                      onPressed: thirdButtonVoidCallback,
-                      text: thirdButtonText,
-                      fontSize: 16.rSp,
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: myButton(
+                        onPressed: thirdButtonVoidCallback,
+                        text: thirdButtonText,
+                        fontSize: 16.rSp,
+                      ),
                     ),
-                  ),
-                  horizontalSpace(2.h),
-                  Expanded(
-                    child: myButton(
-                      onPressed: fourthButtonVoidCallback,
-                      text: fourthButtonText,
-                      fontSize: 16.rSp,
+                    horizontalSpace(2.w),
+                    Expanded(
+                      child: myButton(
+                        onPressed: fourthButtonVoidCallback,
+                        text: fourthButtonText,
+                        fontSize: 16.rSp,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               verticalSpace(1.h),
-              Row(
-                children: [
-                  Expanded(
-                    child: myButton(
-                      onPressed: fifthButtonVoidCallback,
-                      text: fifthButtonText,
-                      fontSize: 16.rSp,
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: myButton(
+                        onPressed: fifthButtonVoidCallback,
+                        text: fifthButtonText,
+                        fontSize: 16.rSp,
+                      ),
                     ),
-                  ),
-                  horizontalSpace(2.h),
-                  Expanded(
-                    child: myButton(
-                      onPressed: sixthButtonVoidCallback,
-                      text: sixthButtonText,
-                      fontSize: 16.rSp,
+                    horizontalSpace(2.w),
+                    Expanded(
+                      child: myButton(
+                        onPressed: sixthButtonVoidCallback,
+                        text: sixthButtonText,
+                        fontSize: 16.rSp,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               verticalSpace(1.h),
-              Row(
-                children: [
-                  Expanded(
-                    child: myButton(
-                      onPressed: seventhButtonVoidCallback,
-                      text: seventhButtonText,
-                      fontSize: 16.rSp,
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: myButton(
+                        onPressed: seventhButtonVoidCallback,
+                        text: seventhButtonText,
+                        fontSize: 16.rSp,
+                      ),
                     ),
-                  ),
-                  horizontalSpace(2.h),
-                  Expanded(
-                    child: myButton(
-                      onPressed: eighthButtonVoidCallback,
-                      text: eighthButtonText,
-                      fontSize: 16.rSp,
+                    horizontalSpace(2.w),
+                    Expanded(
+                      child: myButton(
+                        onPressed: eighthButtonVoidCallback,
+                        text: eighthButtonText,
+                        fontSize: 16.rSp,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
 
             ],

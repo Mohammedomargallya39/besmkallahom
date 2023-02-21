@@ -23,6 +23,14 @@ class AhadethWidget extends StatelessWidget {
       AppString.aboDawood,
     ];
 
+    List<String> bookName = [
+      'sahih-bukhari',
+      'sahih-muslim',
+      'al-tirmidhi',
+      'ibn-e-majah',
+      'abu-dawood',
+    ];
+
     return Column(
       children: [
         defaultAppBar(
@@ -39,6 +47,7 @@ class AhadethWidget extends StatelessWidget {
                     {
                       navigateTo(context, HadethDetailScreen(
                         title: ahadethBooks[index],
+                        bookName: bookName[index],
                       ));
                     },
                     child: AzkarBuildItem
