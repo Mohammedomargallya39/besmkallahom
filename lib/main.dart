@@ -23,12 +23,12 @@ void main() async
   currentLng = position.longitude;
   await di.init();
   salahTimes = [
-    await sl<CacheHelper>().get('fajr') ?? 'please, Open Network',
-    await sl<CacheHelper>().get('sunrise') ?? 'please, Open Network',
-    await sl<CacheHelper>().get('dhohr') ?? 'please, Open Network',
-    await sl<CacheHelper>().get('asr') ?? 'please, Open Network',
-    await sl<CacheHelper>().get('maghreb') ?? 'please, Open Network',
-    await sl<CacheHelper>().get('eshaa') ?? 'please, Open Network',
+    await sl<CacheHelper>().get('fajr') ?? 'Open Network',
+    await sl<CacheHelper>().get('sunrise') ?? 'Open Network',
+    await sl<CacheHelper>().get('dhuhr') ?? 'Open Network',
+    await sl<CacheHelper>().get('asr') ?? 'Open Network',
+    await sl<CacheHelper>().get('maghrib') ?? 'Open Network',
+    await sl<CacheHelper>().get('ishaa') ?? 'Open Network',
   ];
   debugPrintFullText(salahTimes.toString());
   bool isRtl = false;

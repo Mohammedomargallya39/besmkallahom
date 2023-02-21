@@ -255,39 +255,54 @@ class SurahWidget extends StatelessWidget {
                             blurRadius: 15.rSp),
                       ],
                     ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: IconButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.skip_next,
-                                color: ColorsManager.mainCard,
-                                size: 40.rSp,
-                              )),
-                        ),
-                        Expanded(
-                          child: IconButton(
-                              padding: EdgeInsets.only(bottom: 5.h),
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.play_circle,
-                                color: ColorsManager.mainCard,
-                                size: 70.rSp,
-                              )),
-                        ),
-                        Expanded(
-                          child: IconButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.skip_previous,
-                                color: ColorsManager.mainCard,
-                                size: 40.rSp,
-                              )),
-                        ),
-                      ],
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 2.h),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: ()
+                                {
+                                  homeCubit.playSound(audio: quran.getAudioURLByVerse(surahNum, pressedIndex! + 2));
+                                },
+                                icon: Icon(
+                                  Icons.skip_next,
+                                  color: ColorsManager.mainCard,
+                                  size: 40.rSp,
+                                )),
+                          ),
+                          Expanded(
+                            child: IconButton(
+                                padding: EdgeInsets.only(bottom: 5.h),
+                                onPressed: ()
+                                {
+                                  homeCubit.playSound(audio: quran.getAudioURLByVerse(surahNum, pressedIndex! +1));
+                                },
+                                icon: Icon(
+                                  homeCubit.turnOn == false?Icons.play_circle: Icons.pause_circle,
+                                  color: ColorsManager.mainCard,
+                                  size: 70.rSp,
+                                )),
+                          ),
+                          Expanded(
+                            child: IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: ()
+                                {
+                                  if(pressedIndex! > 1)
+                                  {
+                                    homeCubit.playSound(audio: quran.getAudioURLByVerse(surahNum, pressedIndex! - 2));
+                                  }
+                                },
+                                icon: Icon(
+                                  Icons.skip_previous,
+                                  color: ColorsManager.mainCard,
+                                  size: 40.rSp,
+                                )),
+                          ),
+                        ],
+                      ),
                     ),
                   )
               ],

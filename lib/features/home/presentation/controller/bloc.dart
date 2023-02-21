@@ -1,12 +1,14 @@
 import 'dart:math';
 import 'package:besmkallahom/core/di/injection.dart';
 import 'package:besmkallahom/core/network/local/cache_helper.dart';
+import 'package:besmkallahom/core/util/resources/constants_manager.dart';
 import 'package:besmkallahom/features/home/domain/entities/tafseer_entity.dart';
 import 'package:besmkallahom/features/home/presentation/controller/state.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:just_audio/just_audio.dart';
 import '../../domain/entities/adan_entity.dart';
 import '../../domain/entities/hadith_entity.dart';
 import '../../domain/usecase/adan_usecase.dart';
@@ -384,6 +386,32 @@ void pickRandomHomeSlah()
 
   }
 
+  bool turnOn = false;
+  final player = AudioPlayer();
+
+  void playSound({required String audio})
+  async {
+
+    turnOn = !turnOn;
+
+    await player.setUrl(audio);
+
+    if(!turnOn) {
+      await player.play();
+    }
+
+    if(turnOn)
+    {
+      await player.pause();
+    }
+
+
+    await player.setVolume(1);
+    await player.setSpeed(1);
+
+    debugPrintFullText(audio);
+    emit(TurnOnSoundState());
+  }
 
 
 }

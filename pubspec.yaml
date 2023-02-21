@@ -67,6 +67,8 @@ dependencies:
   font_awesome_flutter: ^10.2.1
   # quran
   quran: ^1.2.0
+  # audio
+  just_audio: ^0.9.31
 
 
 

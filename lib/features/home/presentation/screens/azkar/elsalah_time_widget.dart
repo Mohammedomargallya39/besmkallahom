@@ -12,8 +12,6 @@ import 'package:besmkallahom/features/home/presentation/widgets/build_elsalah_it
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../../core/di/injection.dart';
-import '../../../../../core/network/local/cache_helper.dart';
 
 class ElsalahTimeWidget extends StatelessWidget {
   const ElsalahTimeWidget({Key? key}) : super(key: key);
@@ -39,8 +37,7 @@ class ElsalahTimeWidget extends StatelessWidget {
     ];
     List<String>? timers;
     HomeCubit homeCubit = HomeCubit.get(context);
-    AppBloc appBloc = AppBloc.get(context);
-    if(appBloc.isAppConnected){
+    if(homeCubit.adanResult != null){
       timers=
       [
         homeCubit.adanResult![DateTime.now().day -1].timings.fajr.substring(0,5),
@@ -50,8 +47,10 @@ class ElsalahTimeWidget extends StatelessWidget {
         homeCubit.adanResult![DateTime.now().day -1].timings.maghrib.substring(0,5),
         homeCubit.adanResult![DateTime.now().day -1].timings.ishaa.substring(0,5),
       ];
-    }else{
+    }else if (homeCubit.adanResult == null){
       timers = salahTimes;
+    }else if (homeCubit.adanResult == null && salahTimes == null){
+      timers = ['','','','','','',];
     }
 
 
@@ -70,21 +69,6 @@ class ElsalahTimeWidget extends StatelessWidget {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if(appBloc.isAppConnected == false)
-                        Expanded(
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(15.rSp),
-                              child: Image.asset(
-                                Assets.images.png.network_error,
-                                height: 100.h,
-                                width: 100.w,
-                              ),
-                            ),
-                          ),
-                        ),
-
-                      if(appBloc.isAppConnected == true)
                         Row(
                         children: [
                           const DefaultText(
@@ -101,7 +85,6 @@ class ElsalahTimeWidget extends StatelessWidget {
                         ],
                       ),
                       verticalSpace(1.h),
-                      if(appBloc.isAppConnected)
                         Expanded(
                           child: Padding(
                             padding: EdgeInsets.all(15.rSp),
