@@ -264,3 +264,5 @@ String displayTranslatedText({
 
 double? currentLat;
 double? currentLng;
+
+List<String>? salahTimes;

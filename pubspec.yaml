@@ -31,10 +31,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   # Service locator
   get_it: ^7.2.0
@@ -51,8 +47,6 @@ dependencies:
   dartz: ^0.10.1
   #connectivity
   connectivity_plus: ^2.3.9
-  # Load local json file
-  lottie: ^1.4.3
   # Load local SVG file
   flutter_svg: ^1.1.5
   # Format Time
@@ -73,7 +67,6 @@ dependencies:
   font_awesome_flutter: ^10.2.1
   # quran
   quran: ^1.2.0
-
 
 
 

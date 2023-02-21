@@ -19,7 +19,7 @@ class ElsalahTimeWidget extends StatelessWidget {
   const ElsalahTimeWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     List<String> elsalahImages = [
       Assets.images.svg.elfagr,
       Assets.images.svg.elfagr,
@@ -37,19 +37,23 @@ class ElsalahTimeWidget extends StatelessWidget {
       AppString.elmaghrb,
       AppString.eleshaa,
     ];
-
+    List<String>? timers;
     HomeCubit homeCubit = HomeCubit.get(context);
     AppBloc appBloc = AppBloc.get(context);
+    if(appBloc.isAppConnected){
+      timers=
+      [
+        homeCubit.adanResult![DateTime.now().day -1].timings.fajr.substring(0,5),
+        homeCubit.adanResult![DateTime.now().day -1].timings.sunrise.substring(0,5),
+        homeCubit.adanResult![DateTime.now().day -1].timings.dhuhr.substring(0,5),
+        homeCubit.adanResult![DateTime.now().day -1].timings.asr.substring(0,5),
+        homeCubit.adanResult![DateTime.now().day -1].timings.maghrib.substring(0,5),
+        homeCubit.adanResult![DateTime.now().day -1].timings.ishaa.substring(0,5),
+      ];
+    }else{
+      timers = salahTimes;
+    }
 
-    List<String> timers=
-    [
-      homeCubit.adanResult![DateTime.now().day -1].timings.fajr.substring(0,5),
-      homeCubit.adanResult![DateTime.now().day -1].timings.sunrise.substring(0,5),
-      homeCubit.adanResult![DateTime.now().day -1].timings.dhuhr.substring(0,5),
-      homeCubit.adanResult![DateTime.now().day -1].timings.asr.substring(0,5),
-      homeCubit.adanResult![DateTime.now().day -1].timings.maghrib.substring(0,5),
-      homeCubit.adanResult![DateTime.now().day -1].timings.ishaa.substring(0,5),
-    ];
 
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
@@ -97,7 +101,7 @@ class ElsalahTimeWidget extends StatelessWidget {
                         ],
                       ),
                       verticalSpace(1.h),
-                      if(appBloc.isAppConnected == true)
+                      if(appBloc.isAppConnected)
                         Expanded(
                           child: Padding(
                             padding: EdgeInsets.all(15.rSp),
@@ -110,7 +114,7 @@ class ElsalahTimeWidget extends StatelessWidget {
                                     elsalahImage: elsalahImages[index],
                                     elsalah: elsalah[index],
                                     indexImage: index,
-                                    timer: timers[index],
+                                    timer: timers![index],
                                   )),
                             ),
                           ),

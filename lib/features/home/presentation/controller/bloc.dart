@@ -296,6 +296,12 @@ void pickRandomHomeSlah()
     {
       emit(AdanSuccessState());
       adanResult = data;
+      sl<CacheHelper>().put('fajr',adanResult![DateTime.now().day -1].timings.fajr.substring(0,5));
+      sl<CacheHelper>().put('sunrise',adanResult![DateTime.now().day -1].timings.sunrise.substring(0,5),);
+      sl<CacheHelper>().put('dhuhr',adanResult![DateTime.now().day -1].timings.dhuhr.substring(0,5));
+      sl<CacheHelper>().put('asr',adanResult![DateTime.now().day -1].timings.asr.substring(0,5));
+      sl<CacheHelper>().put('maghrib',adanResult![DateTime.now().day -1].timings.maghrib.substring(0,5));
+      sl<CacheHelper>().put('ishaa',adanResult![DateTime.now().day -1].timings.ishaa.substring(0,5));
     });
 
   }
