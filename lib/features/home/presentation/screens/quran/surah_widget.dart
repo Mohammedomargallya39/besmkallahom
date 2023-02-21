@@ -2,6 +2,7 @@ import 'package:besmkallahom/core/util/resources/assets.gen.dart';
 import 'package:besmkallahom/core/util/resources/colors_manager.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
 import 'package:besmkallahom/core/util/widgets/default_text.dart';
+import 'package:besmkallahom/core/util/widgets/option_dialog.dart';
 import 'package:besmkallahom/features/home/presentation/controller/bloc.dart';
 import 'package:besmkallahom/features/home/presentation/controller/state.dart';
 import 'package:flutter/material.dart';
@@ -115,6 +116,94 @@ class SurahWidget extends StatelessWidget {
                             homeCubit.ayahPressed(true);
                           }
 
+                        },
+                        onLongPress: ()
+                        {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return OptionsDialog(
+                                    message: 'إختر',
+                                    firstButtonText: 'التفسير الميسر',
+                                    secondButtonText: 'تفسير الجلالين',
+                                    thirdButtonText: 'تفسير السعدي',
+                                    fourthButtonText: 'تفسير ابن كثير',
+                                    fifthButtonText: 'تفسير الطنطاوي',
+                                    sixthButtonText: 'تفسير البغوي',
+                                    seventhButtonText: 'تفسير القرطبي',
+                                    eighthButtonText: 'تفسير الطبري',
+
+                                    height: 40.h,
+
+                                  firstButtonVoidCallback: ()
+                                    {
+
+                                      homeCubit.tafseer(
+                                          tafseerId: 1,
+                                          surahId: surahNum,
+                                          ayahId: index+1
+                                      );
+
+                                    },
+                                  secondButtonVoidCallback: ()
+                                  {
+                                    homeCubit.tafseer(
+                                        tafseerId: 2,
+                                        surahId: surahNum,
+                                        ayahId: index+1
+                                    );
+                                  },
+                                  thirdButtonVoidCallback: ()
+                                  {
+                                    homeCubit.tafseer(
+                                        tafseerId: 3,
+                                        surahId: surahNum,
+                                        ayahId: index+1
+                                    );
+                                  },
+                                  fourthButtonVoidCallback: ()
+                                  {
+                                    homeCubit.tafseer(
+                                        tafseerId: 4,
+                                        surahId: surahNum,
+                                        ayahId: index+1
+                                    );
+                                  },
+                                  fifthButtonVoidCallback: ()
+                                  {
+                                    homeCubit.tafseer(
+                                        tafseerId: 5,
+                                        surahId: surahNum,
+                                        ayahId: index+1
+                                    );
+                                  },
+                                  sixthButtonVoidCallback: ()
+                                  {
+                                    homeCubit.tafseer(
+                                        tafseerId: 6,
+                                        surahId: surahNum,
+                                        ayahId: index+1
+                                    );
+                                  },
+                                  seventhButtonVoidCallback: ()
+                                  {
+                                    homeCubit.tafseer(
+                                        tafseerId: 7,
+                                        surahId: surahNum,
+                                        ayahId: index+1
+                                    );
+                                  },
+                                  eighthButtonVoidCallback: ()
+                                  {
+                                    homeCubit.tafseer(
+                                        tafseerId: 8,
+                                        surahId: surahNum,
+                                        ayahId: index+1
+                                    );
+                                  },
+                                );
+                              },
+                          );
                         },
                         child: Padding(
                           padding: EdgeInsets.symmetric(

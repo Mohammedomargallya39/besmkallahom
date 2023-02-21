@@ -21,3 +21,7 @@ class AlarmChangeState extends HomeState {}
 class AdanLoadingState extends HomeState{}
 class AdanErrorState extends HomeState{}
 class AdanSuccessState extends HomeState{}
+
+class TafseerLoadingState extends HomeState{}
+class TafseerErrorState extends HomeState{}
+class TafseerSuccessState extends HomeState{}

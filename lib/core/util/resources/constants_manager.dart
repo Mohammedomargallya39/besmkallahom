@@ -264,4 +264,3 @@ String displayTranslatedText({
 
 double? currentLat;
 double? currentLng;
-
