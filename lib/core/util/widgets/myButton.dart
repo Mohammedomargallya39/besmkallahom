@@ -47,13 +47,16 @@ class myButton extends StatelessWidget {
         child: textOnly
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(text,
-                    style: textStyle ??
-                        Theme.of(context).textTheme.displaySmall!.copyWith(
-                            color: Colors.white,
-                            fontFamily: 'english',
-                            fontWeight: FontWeight.w600,
-                            fontSize: fontSize)),
+                child: FittedBox(
+                  fit: BoxFit.contain,
+                  child: Text(text,
+                      style: textStyle ??
+                          Theme.of(context).textTheme.displaySmall!.copyWith(
+                              color: Colors.white,
+                              fontFamily: 'english',
+                              fontWeight: FontWeight.w600,
+                              fontSize: fontSize)),
+                ),
               )
             : Padding(
                 padding: const EdgeInsets.all(8.0),

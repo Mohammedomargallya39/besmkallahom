@@ -74,7 +74,16 @@ class MyApp extends StatelessWidget {
             ..connectivityListener(),
         ),
         BlocProvider(
-          create: (BuildContext context) => sl<HomeCubit>()..adan(year: DateTime.now().year.toString(), month: DateTime.now().month.toString(), day: DateTime.now().day.toString(), lat: currentLat.toString(), lng: currentLng.toString(), method: '5')
+          create: (BuildContext context) => sl<HomeCubit>()
+            ..adan(
+                year: DateTime.now().year.toString(),
+                month: DateTime.now().month.toString(),
+                day: DateTime.now().day.toString(),
+                lat: currentLat.toString(),
+                lng: currentLng.toString(),
+                method: '5'
+            )..getSavedData(),
+
         ),
       ],
       child: BlocBuilder<AppBloc, AppState>(
