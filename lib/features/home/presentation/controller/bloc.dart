@@ -383,34 +383,6 @@ void pickRandomHomeSlah()
       emit(HadithSuccessState());
       hadithResult = data;
     });
-
-  }
-
-  bool turnOn = false;
-  final player = AudioPlayer();
-
-  void playSound({required String audio})
-  async {
-
-    turnOn = !turnOn;
-
-    await player.setUrl(audio);
-
-    if(!turnOn) {
-      await player.play();
-    }
-
-    if(turnOn)
-    {
-      await player.pause();
-    }
-
-
-    await player.setVolume(1);
-    await player.setSpeed(1);
-
-    debugPrintFullText(audio);
-    emit(TurnOnSoundState());
   }
 
 

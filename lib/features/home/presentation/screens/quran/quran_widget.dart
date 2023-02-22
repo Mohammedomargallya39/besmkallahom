@@ -35,6 +35,7 @@ class QuranWidget extends StatelessWidget {
                   fontSize: 25.rSp,
                 ),
                 verticalSpace(3.rSp),
+                if(surahNum != 0)
                 Padding(
                   padding: EdgeInsets.only(left: 5.w),
                   child: Stack(
@@ -65,12 +66,12 @@ class QuranWidget extends StatelessWidget {
                                     minHeight: 0.4.h,
                                     backgroundColor: ColorsManager.lightGrey.withOpacity(0.5),
                                     color: ColorsManager.white,
-                                    value: 0.3,
+                                    value: (pageNum! / quran.totalPagesCount),
                                   ),
                                 ),
                                 verticalSpace(1.h),
                                 DefaultText(
-                                  title: '30%',
+                                  title: '${((pageNum! / quran.totalPagesCount) * 100).toInt()} %',
                                   style: Style.medium,
                                   fontSize: 15.rSp,
                                   color: ColorsManager.white,
@@ -157,7 +158,7 @@ class QuranWidget extends StatelessWidget {
                           )
                         ],
                       ),
-                      if(homeCubit.hideCardValue == false)
+                      if(homeCubit.hideCardValue == false && surahNum != 0 )
                         Stack(
                           alignment: AlignmentDirectional.topCenter,
                           children: [
@@ -182,20 +183,26 @@ class QuranWidget extends StatelessWidget {
                                     ),
                                     horizontalSpace(2.w),
                                     DefaultText(
-                                      title: 'الفاتحة',
+                                      title: surahName!,
                                       style: Style.medium,
                                       fontSize: 30.rSp,
                                       color: ColorsManager.white,
                                       fontFamily: 'arabic',
                                     ),
                                     const Spacer(),
-                                    DefaultText(
-                                      title: 'إضغط للإستكمال',
-                                      fontSize: 15.rSp,
-                                      style: Style.extraSmall,
-                                      color: ColorsManager.white,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'arabic',
+                                    InkWell(
+                                      onTap: ()
+                                      {
+                                          navigateTo(context, SurahScreen(surahNum: surahNum!));
+                                      },
+                                      child: DefaultText(
+                                        title: 'إضغط للإستكمال',
+                                        fontSize: 15.rSp,
+                                        style: Style.extraSmall,
+                                        color: ColorsManager.white,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'arabic',
+                                      ),
                                     ),
                                   ],
                                 ),

@@ -265,4 +265,9 @@ String displayTranslatedText({
 double? currentLat;
 double? currentLng;
 
+int? surahNum = 0;
+int? ayahNum = 0;
+int? pageNum = 0;
+String? surahName = 'لم تقرأ بعد';
+
 List<String>? salahTimes;

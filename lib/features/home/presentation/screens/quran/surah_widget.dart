@@ -1,3 +1,4 @@
+import 'package:besmkallahom/core/network/local/cache_helper.dart';
 import 'package:besmkallahom/core/util/resources/assets.gen.dart';
 import 'package:besmkallahom/core/util/resources/colors_manager.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
@@ -8,6 +9,8 @@ import 'package:besmkallahom/features/home/presentation/controller/bloc.dart';
 import 'package:besmkallahom/features/home/presentation/controller/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:just_audio/just_audio.dart';
+import '../../../../../core/di/injection.dart';
 import '../../../../../core/util/resources/constants_manager.dart';
 import 'package:quran/quran.dart' as quran;
 
@@ -21,6 +24,10 @@ class SurahWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeCubit homeCubit = HomeCubit.get(context);
     int? pressedIndex;
+    final player = AudioPlayer();
+    final versesPrev = <String>[];
+
+
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
         if(state is TafseerSuccessState)
@@ -119,7 +126,6 @@ class SurahWidget extends StatelessWidget {
                             pressedIndex = index;
                             homeCubit.ayahPressed(true);
                           }
-
                         },
                         onLongPress: ()
                         {
@@ -209,6 +215,37 @@ class SurahWidget extends StatelessWidget {
                               },
                           );
                         },
+
+                        onDoubleTap: ()
+                        {
+                          showDialog(
+                              context: context,
+                              builder: (context)
+                              {
+                                return OptionsDialog(
+                                    message: 'إختر',
+                                    firstButtonText: 'حفظ',
+                                    secondButtonText: 'إالغاء',
+                                    firstButtonVoidCallback: ()
+                                    {
+                                      designToastDialog(
+                                          context: context,
+                                          toast: TOAST.info,
+                                          text: 'تم حفظ أخر ما قرأت بنجاح.'
+                                      );
+                                      sl<CacheHelper>().put('ayahNum', index + 1);
+                                      sl<CacheHelper>().put('surahNum', surahNum);
+                                      sl<CacheHelper>().put('surahName', quran.getSurahNameArabic(surahNum));
+                                      sl<CacheHelper>().put('pageNum', quran.getPageNumber(surahNum, index + 1));
+                                    },
+                                    secondButtonVoidCallback: ()
+                                    {
+                                      Navigator.pop(context);
+                                    }
+                                );
+                              },
+                          );
+                        },
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: 10.w, vertical: 1.h),
@@ -222,7 +259,7 @@ class SurahWidget extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 2.w,vertical: 1.h),
                               child: DefaultText(
-                                title: '${quran.getVerse(surahNum, index + 1)} ${quran.getVerseEndSymbol(index+1)}',
+                                title: '${quran.getVerse(surahNum, index + 1)} ${quran.getVerseEndSymbol(index+1)}${ quran.isSajdahVerse(surahNum, index + 1) ? quran.sajdah :''}',
                                 style: Style.large,
                                 fontSize: 20.rSp,
                                 fontWeight: FontWeight.w600,
@@ -257,52 +294,20 @@ class SurahWidget extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 2.h),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: ()
-                                {
-                                  homeCubit.playSound(audio: quran.getAudioURLByVerse(surahNum, pressedIndex! + 2));
-                                },
-                                icon: Icon(
-                                  Icons.skip_next,
-                                  color: ColorsManager.mainCard,
-                                  size: 40.rSp,
-                                )),
-                          ),
-                          Expanded(
-                            child: IconButton(
-                                padding: EdgeInsets.only(bottom: 5.h),
-                                onPressed: ()
-                                {
-                                  homeCubit.playSound(audio: quran.getAudioURLByVerse(surahNum, pressedIndex! +1));
-                                },
-                                icon: Icon(
-                                  homeCubit.turnOn == false?Icons.play_circle: Icons.pause_circle,
-                                  color: ColorsManager.mainCard,
-                                  size: 70.rSp,
-                                )),
-                          ),
-                          Expanded(
-                            child: IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: ()
-                                {
-                                  if(pressedIndex! > 1)
-                                  {
-                                    homeCubit.playSound(audio: quran.getAudioURLByVerse(surahNum, pressedIndex! - 2));
-                                  }
-                                },
-                                icon: Icon(
-                                  Icons.skip_previous,
-                                  color: ColorsManager.mainCard,
-                                  size: 40.rSp,
-                                )),
-                          ),
-                        ],
-                      ),
+                      child: IconButton(
+                          padding: EdgeInsets.only(bottom: 5.h),
+                          onPressed: ()
+                          {
+                            player.setUrl(quran.getAudioURLByVerse(surahNum, pressedIndex! +1));
+                            player.setSpeed(1);
+                            player.setVolume(1);
+                              player.play();
+                          },
+                          icon: Icon(
+                           Icons.play_circle,
+                            color: ColorsManager.mainCard,
+                            size: 70.rSp,
+                          )),
                     ),
                   )
               ],

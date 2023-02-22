@@ -8,21 +8,21 @@ class OptionsDialog extends Dialog {
   final String message;
   final String firstButtonText;
   final String secondButtonText;
-  final String thirdButtonText;
-  final String fourthButtonText;
-  final String fifthButtonText;
-  final String sixthButtonText;
-  final String seventhButtonText;
-  final String eighthButtonText;
+  final String? thirdButtonText;
+  final String? fourthButtonText;
+  final String? fifthButtonText;
+  final String? sixthButtonText;
+  final String? seventhButtonText;
+  final String? eighthButtonText;
 
   final VoidCallback firstButtonVoidCallback;
   final VoidCallback secondButtonVoidCallback;
-  final VoidCallback thirdButtonVoidCallback;
-  final VoidCallback fourthButtonVoidCallback;
-  final VoidCallback fifthButtonVoidCallback;
-  final VoidCallback sixthButtonVoidCallback;
-  final VoidCallback seventhButtonVoidCallback;
-  final VoidCallback eighthButtonVoidCallback;
+  final VoidCallback? thirdButtonVoidCallback;
+  final VoidCallback? fourthButtonVoidCallback;
+  final VoidCallback? fifthButtonVoidCallback;
+  final VoidCallback? sixthButtonVoidCallback;
+  final VoidCallback? seventhButtonVoidCallback;
+  final VoidCallback? eighthButtonVoidCallback;
 
   final double height;
 
@@ -30,21 +30,21 @@ class OptionsDialog extends Dialog {
     required this.message,
     required this.firstButtonText,
     required this.secondButtonText,
-    required this.thirdButtonText,
-    required this.fourthButtonText,
-    required this.fifthButtonText,
-    required this.sixthButtonText,
-    required this.seventhButtonText,
-    required this.eighthButtonText,
+     this.thirdButtonText,
+     this.fourthButtonText,
+     this.fifthButtonText,
+     this.sixthButtonText,
+     this.seventhButtonText,
+     this.eighthButtonText,
 
     required this.firstButtonVoidCallback,
     required this.secondButtonVoidCallback,
-    required this.thirdButtonVoidCallback,
-    required this.fourthButtonVoidCallback,
-    required this.fifthButtonVoidCallback,
-    required this.sixthButtonVoidCallback,
-    required this.seventhButtonVoidCallback,
-    required this.eighthButtonVoidCallback,
+     this.thirdButtonVoidCallback,
+     this.fourthButtonVoidCallback,
+     this.fifthButtonVoidCallback,
+     this.sixthButtonVoidCallback,
+     this.seventhButtonVoidCallback,
+     this.eighthButtonVoidCallback,
 
     this.height = 160.0,
     Key? key,
@@ -88,14 +88,16 @@ class OptionsDialog extends Dialog {
                   ],
                 ),
               ),
-              verticalSpace(1.h),
+              if(thirdButtonText != null && fourthButtonText != null)
+                verticalSpace(1.h),
+              if(thirdButtonText != null && fourthButtonText != null)
               Expanded(
                 child: Row(
                   children: [
                     Expanded(
                       child: myButton(
                         onPressed: thirdButtonVoidCallback,
-                        text: thirdButtonText,
+                        text: thirdButtonText!,
                         fontSize: 16.rSp,
                       ),
                     ),
@@ -103,21 +105,23 @@ class OptionsDialog extends Dialog {
                     Expanded(
                       child: myButton(
                         onPressed: fourthButtonVoidCallback,
-                        text: fourthButtonText,
+                        text: fourthButtonText!,
                         fontSize: 16.rSp,
                       ),
                     ),
                   ],
                 ),
               ),
-              verticalSpace(1.h),
-              Expanded(
+              if(fifthButtonText != null && sixthButtonText != null)
+                verticalSpace(1.h),
+              if(fifthButtonText != null && sixthButtonText != null)
+                Expanded(
                 child: Row(
                   children: [
                     Expanded(
                       child: myButton(
                         onPressed: fifthButtonVoidCallback,
-                        text: fifthButtonText,
+                        text: fifthButtonText!,
                         fontSize: 16.rSp,
                       ),
                     ),
@@ -125,21 +129,23 @@ class OptionsDialog extends Dialog {
                     Expanded(
                       child: myButton(
                         onPressed: sixthButtonVoidCallback,
-                        text: sixthButtonText,
+                        text: sixthButtonText!,
                         fontSize: 16.rSp,
                       ),
                     ),
                   ],
                 ),
               ),
-              verticalSpace(1.h),
-              Expanded(
+              if(seventhButtonText != null && eighthButtonText != null)
+                verticalSpace(1.h),
+              if(seventhButtonText != null && eighthButtonText != null)
+                Expanded(
                 child: Row(
                   children: [
                     Expanded(
                       child: myButton(
                         onPressed: seventhButtonVoidCallback,
-                        text: seventhButtonText,
+                        text: seventhButtonText!,
                         fontSize: 16.rSp,
                       ),
                     ),
@@ -147,7 +153,7 @@ class OptionsDialog extends Dialog {
                     Expanded(
                       child: myButton(
                         onPressed: eighthButtonVoidCallback,
-                        text: eighthButtonText,
+                        text: eighthButtonText!,
                         fontSize: 16.rSp,
                       ),
                     ),
