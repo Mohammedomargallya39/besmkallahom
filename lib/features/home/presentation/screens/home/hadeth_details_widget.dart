@@ -23,7 +23,7 @@ class HadethDetailsWidget extends StatelessWidget {
     HomeCubit homeCubit = HomeCubit.get(context);
     AppBloc appBloc = AppBloc.get(context);
 
-    homeCubit.hadith(pageNum: homeCubit.pageNum, bookName: bookName);
+    homeCubit.hadith(pageNum: homeCubit.pageNumber, bookName: bookName);
 
     return SafeArea(
       child: BlocBuilder<HomeCubit,HomeState>(
@@ -62,7 +62,7 @@ class HadethDetailsWidget extends StatelessWidget {
                           onPressed: ()
                           {
                             homeCubit.changePrevPage();
-                            homeCubit.hadith(pageNum: homeCubit.pageNum, bookName: bookName);
+                            homeCubit.hadith(pageNum: homeCubit.pageNumber, bookName: bookName);
                            // homeCubit.scrollToTop();
                           },
                           icon: Icon(
@@ -72,7 +72,7 @@ class HadethDetailsWidget extends StatelessWidget {
                           )),
                     ),
 
-                    DefaultText(title: '${homeCubit.pageNum}' , style: Style.medium , fontWeight: FontWeight.w600,fontSize: 18.rSp),
+                    DefaultText(title: '${homeCubit.pageNumber}' , style: Style.medium , fontWeight: FontWeight.w600,fontSize: 18.rSp),
 
                     Expanded(
                       child: IconButton(
@@ -80,7 +80,7 @@ class HadethDetailsWidget extends StatelessWidget {
                           onPressed: ()
                           {
                             homeCubit.changeNextPage();
-                            homeCubit.hadith(pageNum: homeCubit.pageNum, bookName: bookName);
+                            homeCubit.hadith(pageNum: homeCubit.pageNumber, bookName: bookName);
                             // homeCubit.scrollToTop();
                           },
                           icon: Icon(

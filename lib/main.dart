@@ -32,11 +32,6 @@ void main() async
   ];
 
 
-  surahNum = await sl<CacheHelper>().get('surahNum');
-  ayahNum = await sl<CacheHelper>().get('ayahNum');
-  pageNum = await sl<CacheHelper>().get('pageNum');
-  surahName = await sl<CacheHelper>().get('surahName');
-
 
   debugPrintFullText(salahTimes.toString());
   bool isRtl = false;

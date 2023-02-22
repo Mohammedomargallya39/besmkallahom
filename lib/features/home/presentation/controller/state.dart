@@ -29,6 +29,7 @@ class TafseerSuccessState extends HomeState{}
 class HadithLoadingState extends HomeState{}
 class HadithErrorState extends HomeState{}
 class HadithSuccessState extends HomeState{}
+class GetSavedDataSuccessState extends HomeState{}
 
 
 class NextPageState extends HomeState{}

@@ -10,11 +10,6 @@ class SurahScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback((_) {});
-    return Scaffold(
-      body: Directionality(
-        textDirection: TextDirection.rtl,
-          child: SurahWidget(surahNum: surahNum,)
-      ),
-    );
+    return SurahWidget(surahNumber: surahNum,);
   }
 }
