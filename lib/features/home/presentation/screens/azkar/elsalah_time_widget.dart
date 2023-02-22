@@ -12,6 +12,7 @@ import 'package:besmkallahom/features/home/presentation/widgets/build_elsalah_it
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geolocator/geolocator.dart';
 
 class ElsalahTimeWidget extends StatelessWidget {
   const ElsalahTimeWidget({Key? key}) : super(key: key);
@@ -52,7 +53,6 @@ class ElsalahTimeWidget extends StatelessWidget {
     }else if (homeCubit.adanResult == null && salahTimes == null){
       timers = ['','','','','','',];
     }
-
 
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {

@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:audioplayers/audioplayers.dart';
 import 'package:besmkallahom/core/network/local/cache_helper.dart';
 import 'package:besmkallahom/core/util/resources/assets.gen.dart';
 import 'package:besmkallahom/core/util/resources/colors_manager.dart';
@@ -11,7 +11,6 @@ import 'package:besmkallahom/features/home/presentation/controller/bloc.dart';
 import 'package:besmkallahom/features/home/presentation/controller/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:just_audio/just_audio.dart';
 import '../../../../../core/di/injection.dart';
 import '../../../../../core/util/resources/constants_manager.dart';
 import 'package:quran/quran.dart' as quran;
@@ -59,6 +58,8 @@ class SurahWidget extends StatelessWidget {
           body: WillPopScope(
             onWillPop: () async {
               homeCubit.ayahPressedValue = false;
+              homeCubit.changePlayingValue = false;
+              player.stop();
               return true;
             },
             child: Directionality(
@@ -85,6 +86,8 @@ class SurahWidget extends StatelessWidget {
                               onPressed: () {
                                 Navigator.pop(context);
                                 homeCubit.ayahPressedValue = false;
+                                homeCubit.changePlayingValue = false;
+                                player.stop();
                               },
                               icon: const Icon(Icons.arrow_forward_ios))
                         ],
@@ -144,6 +147,8 @@ class SurahWidget extends StatelessWidget {
                                       } else {
                                         pressedIndex = index;
                                         homeCubit.ayahPressed(true);
+                                        homeCubit.changePlaying(value: false);
+                                        player.stop();
                                       }
                                     },
                                     onLongPress: () {
@@ -321,15 +326,21 @@ class SurahWidget extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: 2.h),
                     child: IconButton(
                         padding: EdgeInsets.only(bottom: 5.h),
-                        onPressed: () {
-                          player.setUrl(quran.getAudioURLByVerse(
-                              surahNumber, pressedIndex! + 1));
-                          player.setSpeed(1);
+                        onPressed: () async{
+                          player.setSourceUrl(quran.getAudioURLByVerse(surahNumber, pressedIndex! + 1));
                           player.setVolume(1);
-                          player.play();
+                          homeCubit.changePlayingValue == false ?
+                          await player.play(UrlSource(quran.getAudioURLByVerse(surahNumber, pressedIndex! + 1))) :
+                          await player.pause();
+                          player.onPlayerComplete.listen((event)
+                          {
+                            homeCubit.changePlaying(value: false);
+                            debugPrintFullText(homeCubit.changePlayingValue.toString());
+                          });
+                          homeCubit.changePlaying();
                         },
                         icon: Icon(
-                          Icons.play_circle,
+                          homeCubit.changePlayingValue == false ? Icons.play_circle : Icons.pause,
                           color: ColorsManager.mainCard,
                           size: 70.rSp,
                         )),
