@@ -19,56 +19,49 @@ import '../screens/donitation/donition_screen.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/quran/quran_screen.dart';
 
-
 class HomeCubit extends Cubit<HomeState> {
-
   final AdanUseCase _adanUseCase;
   final TafseerUseCase _tafseerUseCase;
   final HadithUseCase _hadithUseCase;
-
 
   HomeCubit({
     required AdanUseCase adanUseCase,
     required TafseerUseCase tafseerUseCase,
     required HadithUseCase hadithUseCase,
-}) :
-        _adanUseCase = adanUseCase,
+  })  : _adanUseCase = adanUseCase,
         _tafseerUseCase = tafseerUseCase,
         _hadithUseCase = hadithUseCase,
         super(Empty());
 
   static HomeCubit get(context) => BlocProvider.of(context);
 
+  int initialTabIndex = 0;
+  List<Widget> homeWidgets = [
+    const HomeScreen(),
+    const QuranScreen(),
+    const AzkarScreen(),
+    const SadakaScreen(),
+  ];
 
-int initialTabIndex = 0;
-List<Widget> homeWidgets =
-[
-  const HomeScreen(),
-  const QuranScreen(),
-  const AzkarScreen(),
-  const SadakaScreen(),
-];
-void changeNavBottomScreen(int index) {
-initialTabIndex = index;
-emit(ChangeBottomNavBarState());
-}
+  void changeNavBottomScreen(int index) {
+    initialTabIndex = index;
+    emit(ChangeBottomNavBarState());
+  }
 
-List<String> randomHomeSlah =
-[
-  '«إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ ۚ يَا أَيُّهَا الَّذِينَ آمَنُوا صَلُّوا عَلَيْهِ وَسَلِّمُوا تَسْلِيمًا»،( سورة الأحزاب: الآية 56).',
-  'اللهم صلّ على محمد وعلى آل محمد، كما صليت على إبراهيم وعلى آل إبراهيم، وبارك على محمد وعلى آل محمد، كما باركت على إبراهيم وعلى آل إبراهيم، إنك حميد مجيد',
-  '«اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّد في الأَوَّلِينَ وَالآخِرِينَ، وَفِي الْمَلأِ الأَعْلَى إِلَى يَوْمِ الْدِّينِ. اللهم صل وسلم وبارك على سيدنا محمد وعلى آله وصحبه عدد ما في علم الله، صلاةً دائمة بدوام ملك الله».',
-  '«اللهم صل وسلم وبارك على سيدنا محمد وعلى آله وصحبه عدد كمال الله وكما يليق بكماله».',
-  '«اللهم صل وسلم وبارك على سيدنا محمد وعلى آله عدد حروف القرآن حرفًا حرفًا، وعدد كل حرف ألفًا ألفًا، وعدد صفوف الملائكة صفًا صفًا، وعدد كل صف ألفًا ألفًا، وعدد الرمال ذرة ذرة، وعدد ما أحاط به علمك، وجرى به قلمك، ونفذ به حكمك في برك وبحرك، وسائر خلقك».',
-  '-«اللهم صلِّ وسلم على صاحب الخُلق العظيم والقدر الفخيم مَن أرسلته رحمة للعالمين سيدنا محمد وعلى آله وصحبه، وألحقنا بخُلقه وأدّبنا بأدبه، وأحيي فينا وفي أُمته هذه المعاني يا كريم».',
-  '«اللهم صَلِّ وسلم على سيدنا محمد صلاة تحل بها عقدتي، وتفرج بها كربتي، وتمحو بها خطيئتي، وتقضي بها حاجتي».',
-  '- «اللهم صل وسلم على سيدنا محمد صلاة تهب لنا بها أكمل المراد وفوق المراد، في دار الدنيا ودار المعاد، وعلى آله وصحبه وبارك وسلم عدد ما علمت وزنة ماعلمت وملء ما علمت».',
-  '«اللهم صل على سيدنا محمد صلاة تنجينا بها من جميع الأهوال والآفات، وتقضي بها جميع الحاجات، وتطهرنا بها من جميع السيئات، وترفعنا بها عندك أعلى الدرجات، وتبلغنا بها أقصى الغايات من جميع الخيرات في الحياة وبعد الممات، وعلى آله وصحبه وسلم تسليمًا كثيرًا »',
-  '«اللهم صل وسلم على سيدنا محمد وعلى آله، صلاة تكون لنا طريقًا لقربه، وتأكيدًا لحبه، وبابًا لجمعنا عليه، وهدية مقبولة بين يديه، وسلم وبارك كذلك أبدًا، وارض عن آله وصحبه السعداء، واكسنا حُلل الرضا».'
-];
+  List<String> randomHomeSlah = [
+    '«إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ ۚ يَا أَيُّهَا الَّذِينَ آمَنُوا صَلُّوا عَلَيْهِ وَسَلِّمُوا تَسْلِيمًا»،( سورة الأحزاب: الآية 56).',
+    'اللهم صلّ على محمد وعلى آل محمد، كما صليت على إبراهيم وعلى آل إبراهيم، وبارك على محمد وعلى آل محمد، كما باركت على إبراهيم وعلى آل إبراهيم، إنك حميد مجيد',
+    '«اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّد في الأَوَّلِينَ وَالآخِرِينَ، وَفِي الْمَلأِ الأَعْلَى إِلَى يَوْمِ الْدِّينِ. اللهم صل وسلم وبارك على سيدنا محمد وعلى آله وصحبه عدد ما في علم الله، صلاةً دائمة بدوام ملك الله».',
+    '«اللهم صل وسلم وبارك على سيدنا محمد وعلى آله وصحبه عدد كمال الله وكما يليق بكماله».',
+    '«اللهم صل وسلم وبارك على سيدنا محمد وعلى آله عدد حروف القرآن حرفًا حرفًا، وعدد كل حرف ألفًا ألفًا، وعدد صفوف الملائكة صفًا صفًا، وعدد كل صف ألفًا ألفًا، وعدد الرمال ذرة ذرة، وعدد ما أحاط به علمك، وجرى به قلمك، ونفذ به حكمك في برك وبحرك، وسائر خلقك».',
+    '-«اللهم صلِّ وسلم على صاحب الخُلق العظيم والقدر الفخيم مَن أرسلته رحمة للعالمين سيدنا محمد وعلى آله وصحبه، وألحقنا بخُلقه وأدّبنا بأدبه، وأحيي فينا وفي أُمته هذه المعاني يا كريم».',
+    '«اللهم صَلِّ وسلم على سيدنا محمد صلاة تحل بها عقدتي، وتفرج بها كربتي، وتمحو بها خطيئتي، وتقضي بها حاجتي».',
+    '- «اللهم صل وسلم على سيدنا محمد صلاة تهب لنا بها أكمل المراد وفوق المراد، في دار الدنيا ودار المعاد، وعلى آله وصحبه وبارك وسلم عدد ما علمت وزنة ماعلمت وملء ما علمت».',
+    '«اللهم صل على سيدنا محمد صلاة تنجينا بها من جميع الأهوال والآفات، وتقضي بها جميع الحاجات، وتطهرنا بها من جميع السيئات، وترفعنا بها عندك أعلى الدرجات، وتبلغنا بها أقصى الغايات من جميع الخيرات في الحياة وبعد الممات، وعلى آله وصحبه وسلم تسليمًا كثيرًا »',
+    '«اللهم صل وسلم على سيدنا محمد وعلى آله، صلاة تكون لنا طريقًا لقربه، وتأكيدًا لحبه، وبابًا لجمعنا عليه، وهدية مقبولة بين يديه، وسلم وبارك كذلك أبدًا، وارض عن آله وصحبه السعداء، واكسنا حُلل الرضا».'
+  ];
 
-  List<String> azkarMorning =
-  [
+  List<String> azkarMorning = [
     '«اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِي العظيم».',
     '«قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ».',
     '«قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدٌَۢ».',
@@ -102,10 +95,7 @@ List<String> randomHomeSlah =
     'أسْتَغْفِرُ اللهَ وَأتُوبُ إلَيْهِ.',
   ];
 
-
-
-  List<String> azkarEvening =
-  [
+  List<String> azkarEvening = [
     '«اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِي العظيم».',
     '«قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ».',
     '«قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدٌَۢ».',
@@ -139,8 +129,7 @@ List<String> randomHomeSlah =
     'أسْتَغْفِرُ اللهَ وَأتُوبُ إلَيْهِ.',
   ];
 
-
-  List<String> azkarElsalah =[
+  List<String> azkarElsalah = [
     'أَسْـتَغْفِرُ الله، أَسْـتَغْفِرُ الله، أَسْـتَغْفِرُ الله.',
     'اللّهُـمَّ أَنْـتَ السَّلامُ ، وَمِـنْكَ السَّلام ، تَبارَكْتَ يا ذا الجَـلالِ وَالإِكْـرام .',
     'لا إلهَ إلاّ اللّهُ وحدَهُ لا شريكَ لهُ، لهُ المُـلْكُ ولهُ الحَمْد، وهوَ على كلّ شَيءٍ قَدير، اللّهُـمَّ لا مانِعَ لِما أَعْطَـيْت، وَلا مُعْطِـيَ لِما مَنَـعْت، وَلا يَنْفَـعُ ذا الجَـدِّ مِنْـكَ الجَـد.',
@@ -181,91 +170,172 @@ List<String> randomHomeSlah =
     'دُعَاءُ الخُرُوجِ مِنَ المَسْجِدِ : يَبْدَأُ بِرِجْلِهِ الْيُسْرَى، وَيَقُولُ: بِسْـمِ اللَّـهِ وَالصَّلاةُ وَالسَّلامُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ إنِّي أَسْأَلُكَ مِنْ فَضْلِكَ، اللَّهُمَّ اعْصِمْنِي مِنَ الشَّيْطَانِ الرَّجِيم.',
   ];
 
+  String? pickedRandom;
 
-String? pickedRandom;
-void pickRandomHomeSlah()
-  {
+  void pickRandomHomeSlah() {
     pickedRandom = randomHomeSlah[Random().nextInt(randomHomeSlah.length)];
-    Future.delayed(const Duration(seconds: 20) , pickRandomHomeSlah);
+    Future.delayed(const Duration(seconds: 20), pickRandomHomeSlah);
   }
 
   Future<void> share() async {
     await FlutterShare.share(
         title: ' ',
         text: ' ',
-        linkUrl: 'https://play.google.com/store/apps/details?id=com.mohammed.gallya.Nakhtm_Quran',
-        chooserTitle: 'شارك بواسطة'
-    );
+        linkUrl:
+            'https://play.google.com/store/apps/details?id=com.mohammed.gallya.Nakhtm_Quran',
+        chooserTitle: 'شارك بواسطة');
   }
 
   bool hideCardValue = false;
-  void hideCard()
-  {
+
+  void hideCard() {
     hideCardValue = !hideCardValue;
     emit(HideCardValueState());
   }
 
   bool ayahPressedValue = false;
-  void ayahPressed(bool value)
-  {
+
+  void ayahPressed(bool value) {
     ayahPressedValue = value;
     emit(AyahOnPressedValueState());
   }
 
   int currentTasbeehNumber = 0;
-  void changeCurrentTasbeehNumber(){
+
+  void changeCurrentTasbeehNumber() {
     currentTasbeehNumber++;
     emit(ChangeCurrentTasbeehNumber());
   }
 
-  int totalTasbeeh = 0 ;
-  void saveTotalTasbeeh() async{
+  int totalTasbeeh = 0;
+
+  void saveTotalTasbeeh() async {
     totalTasbeeh = totalTasbeeh + currentTasbeehNumber;
     currentTasbeehNumber = 0;
-    await sl<CacheHelper>().put('totalTasbeeh',totalTasbeeh);
+    await sl<CacheHelper>().put('totalTasbeeh', totalTasbeeh);
     getTotalTasbeeh();
   }
 
-  void getTotalTasbeeh()async{
+  void getTotalTasbeeh() async {
     totalTasbeeh = await sl<CacheHelper>().get('totalTasbeeh');
     emit(GetTotalTasbeeh());
   }
 
-  List<int> repetitionMorningNum = [1,3,3,3,1,1,3,4,1,7,3,1,1,3,3,3,1,3,1,1,3,10,3,3,3,3,1,1,100,100,100];
-  List<int> repetitionEveningNum = [1,3,3,3,1,1,3,4,1,7,3,1,1,3,3,3,1,3,1,1,3,10,3,3,3,3,1,1,100,100,100];
-  List<int> repetitionElsalahNum = [1,1,1,1,33,33,33,1,3,3,3,1,10,1,7,1];
-  List<int> repetitionSleepingNum = [1,1,3,1,1,1,1,33,33,34,3,1,1];
-  List<int> repetitionMasgedNum = [1,1,1];
+  List<int> repetitionMorningNum = [
+    1,
+    3,
+    3,
+    3,
+    1,
+    1,
+    3,
+    4,
+    1,
+    7,
+    3,
+    1,
+    1,
+    3,
+    3,
+    3,
+    1,
+    3,
+    1,
+    1,
+    3,
+    10,
+    3,
+    3,
+    3,
+    3,
+    1,
+    1,
+    100,
+    100,
+    100
+  ];
+  List<int> repetitionEveningNum = [
+    1,
+    3,
+    3,
+    3,
+    1,
+    1,
+    3,
+    4,
+    1,
+    7,
+    3,
+    1,
+    1,
+    3,
+    3,
+    3,
+    1,
+    3,
+    1,
+    1,
+    3,
+    10,
+    3,
+    3,
+    3,
+    3,
+    1,
+    1,
+    100,
+    100,
+    100
+  ];
+  List<int> repetitionElsalahNum = [
+    1,
+    1,
+    1,
+    1,
+    33,
+    33,
+    33,
+    1,
+    3,
+    3,
+    3,
+    1,
+    10,
+    1,
+    7,
+    1
+  ];
+  List<int> repetitionSleepingNum = [1, 1, 3, 1, 1, 1, 1, 33, 33, 34, 3, 1, 1];
+  List<int> repetitionMasgedNum = [1, 1, 1];
 
-  void changeRepetitionMasgedNum(int index){
+  void changeRepetitionMasgedNum(int index) {
     repetitionMasgedNum[index]--;
     emit(ChangeRepetitionMasgedNumber());
   }
 
-  void changeRepetitionSleepingNum(int index){
+  void changeRepetitionSleepingNum(int index) {
     repetitionSleepingNum[index]--;
     emit(ChangeRepetitionSleepingNumber());
   }
 
-
-  void changeRepetitionElsalahNum(int index){
+  void changeRepetitionElsalahNum(int index) {
     repetitionElsalahNum[index]--;
     emit(ChangeRepetitionSalahNumber());
   }
 
-  void changeRepetitionMorinigNum(int index){
+  void changeRepetitionMorinigNum(int index) {
     repetitionMorningNum[index]--;
     emit(ChangeRepetitionMorningNumber());
   }
 
-  void changeRepetitionEveningNum(int index){
+  void changeRepetitionEveningNum(int index) {
     repetitionEveningNum[index]--;
     emit(ChangeRepetitionEveningNumber());
   }
 
   bool azkarPressedValue = false;
-  void azkarPressed()
-  {
+
+  void azkarPressed() {
     ayahPressedValue = true;
     emit(AyahOnPressedValueState());
   }
@@ -278,6 +348,7 @@ void pickRandomHomeSlah()
   }
 
   List<AdanEntity>? adanResult;
+
   void adan({
     required String year,
     required String month,
@@ -285,71 +356,73 @@ void pickRandomHomeSlah()
     required String lat,
     required String lng,
     required String method,
-})async {
+  }) async {
     emit(AdanLoadingState());
-    
-    final adan = await _adanUseCase(
-      AdanParams(
-        year: year,
-        month: month,
-        day: day,
-        lat: lat,
-        lng: lng, 
-        method: method,));
-    
+
+    final adan = await _adanUseCase(AdanParams(
+      year: year,
+      month: month,
+      day: day,
+      lat: lat,
+      lng: lng,
+      method: method,
+    ));
+
     adan.fold((failure) {
       emit(AdanErrorState());
-    }, (data)
-    {
+    }, (data) {
       emit(AdanSuccessState());
       adanResult = data;
-      sl<CacheHelper>().put('fajr',adanResult![DateTime.now().day -1].timings.fajr.substring(0,5));
-      sl<CacheHelper>().put('sunrise',adanResult![DateTime.now().day -1].timings.sunrise.substring(0,5),);
-      sl<CacheHelper>().put('dhuhr',adanResult![DateTime.now().day -1].timings.dhuhr.substring(0,5));
-      sl<CacheHelper>().put('asr',adanResult![DateTime.now().day -1].timings.asr.substring(0,5));
-      sl<CacheHelper>().put('maghrib',adanResult![DateTime.now().day -1].timings.maghrib.substring(0,5));
-      sl<CacheHelper>().put('ishaa',adanResult![DateTime.now().day -1].timings.ishaa.substring(0,5));
+      sl<CacheHelper>().put('fajr',
+          adanResult![DateTime.now().day - 1].timings.fajr.substring(0, 5));
+      sl<CacheHelper>().put(
+        'sunrise',
+        adanResult![DateTime.now().day - 1].timings.sunrise.substring(0, 5),
+      );
+      sl<CacheHelper>().put('dhuhr',
+          adanResult![DateTime.now().day - 1].timings.dhuhr.substring(0, 5));
+      sl<CacheHelper>().put('asr',
+          adanResult![DateTime.now().day - 1].timings.asr.substring(0, 5));
+      sl<CacheHelper>().put('maghrib',
+          adanResult![DateTime.now().day - 1].timings.maghrib.substring(0, 5));
+      sl<CacheHelper>().put('ishaa',
+          adanResult![DateTime.now().day - 1].timings.ishaa.substring(0, 5));
     });
-
   }
 
   TafseerEntity? tafseerResult;
+
   void tafseer({
     required int tafseerId,
     required int surahId,
     required int ayahId,
-  })async {
+  }) async {
     emit(TafseerLoadingState());
 
-    final tafseer = await _tafseerUseCase(
-        TafseerParams(
-          tafseerId: tafseerId,
-          surahId: surahId,
-          ayahId: ayahId,
-        ));
+    final tafseer = await _tafseerUseCase(TafseerParams(
+      tafseerId: tafseerId,
+      surahId: surahId,
+      ayahId: ayahId,
+    ));
 
     tafseer.fold((failure) {
       emit(TafseerErrorState());
-    }, (data)
-    {
+    }, (data) {
       emit(TafseerSuccessState());
       tafseerResult = data;
     });
-
   }
 
-  int pageNum = 1;
-  void changeNextPage()
-  {
-    pageNum++;
+  int pageNumber = 1;
+
+  void changeNextPage() {
+    pageNumber++;
     emit(NextPageState());
   }
 
-  void changePrevPage()
-  {
-    if( pageNum > 1)
-    {
-      pageNum--;
+  void changePrevPage() {
+    if (pageNumber > 1) {
+      pageNumber--;
     }
     emit(PrevPageState());
   }
@@ -366,23 +439,30 @@ void pickRandomHomeSlah()
   // }
 
   List<HadithEntity>? hadithResult;
+
   void hadith({
     required int pageNum,
     required String bookName,
-  })async {
+  }) async {
     emit(HadithLoadingState());
-    final hadith = await _hadithUseCase(
-        HadithParams(
-          pageNum: pageNum,
-          bookName: bookName,
-         ));
+    final hadith = await _hadithUseCase(HadithParams(
+      pageNum: pageNum,
+      bookName: bookName,
+    ));
     hadith.fold((failure) {
       emit(HadithErrorState());
-    }, (data)
-    {
+    }, (data) {
       emit(HadithSuccessState());
       hadithResult = data;
     });
+  }
+
+  void getSavedData()async{
+    surahNum = await sl<CacheHelper>().get('surahNum')?? 0;
+    ayahNum = await sl<CacheHelper>().get('ayahNum')?? 0;
+    pageNum = await sl<CacheHelper>().get('pageNum') ?? 0;
+    surahName = await sl<CacheHelper>().get('surahName')?? '';
+    emit(GetSavedDataSuccessState());
   }
 
 

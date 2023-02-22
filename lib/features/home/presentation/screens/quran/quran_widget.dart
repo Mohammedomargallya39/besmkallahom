@@ -17,6 +17,8 @@ import 'package:quran/quran.dart' as quran;
 class QuranWidget extends StatelessWidget {
   const QuranWidget({Key? key}) : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) {
     HomeCubit homeCubit = HomeCubit.get(context);
