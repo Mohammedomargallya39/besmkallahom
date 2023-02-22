@@ -40,7 +40,7 @@ PreferredSizeWidget defaultAppBar({
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 2.w),
+          padding: EdgeInsets.only(left: 5.w,right: 5.w),
           child: InkWell(
             onTap: (){
               Navigator.pop(context);
@@ -52,5 +52,6 @@ PreferredSizeWidget defaultAppBar({
         ),
       ],
     ),
+    toolbarHeight: 10.h,
   );
 }

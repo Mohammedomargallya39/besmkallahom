@@ -36,3 +36,4 @@ class NextPageState extends HomeState{}
 class PrevPageState extends HomeState{}
 class ScrollTopState extends HomeState{}
 class TurnOnSoundState extends HomeState{}
+class GetLocationState extends HomeState{}

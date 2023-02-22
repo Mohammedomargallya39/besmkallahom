@@ -1,5 +1,4 @@
 import 'package:besmkallahom/core/network/local/cache_helper.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,10 +16,6 @@ void main() async
 {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Geolocator.requestPermission();
-  Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-  currentLat = position.latitude;
-  currentLng = position.longitude;
   await di.init();
   salahTimes = [
     await sl<CacheHelper>().get('fajr') ?? 'Open Network',
@@ -30,6 +25,15 @@ void main() async
     await sl<CacheHelper>().get('maghrib') ?? 'Open Network',
     await sl<CacheHelper>().get('ishaa') ?? 'Open Network',
   ];
+
+  permission = await sl<CacheHelper>().get('permission') ?? false;
+
+  if(permission == true)
+  {
+    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    currentLat = position.latitude;
+    currentLng = position.longitude;
+  }
 
 
 
@@ -75,14 +79,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (BuildContext context) => sl<HomeCubit>()
-            ..adan(
-                year: DateTime.now().year.toString(),
-                month: DateTime.now().month.toString(),
-                day: DateTime.now().day.toString(),
-                lat: currentLat.toString(),
-                lng: currentLng.toString(),
-                method: '5'
-            )..getSavedData(),
+            ..getSavedData(),
 
         ),
       ],

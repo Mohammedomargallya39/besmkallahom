@@ -8,7 +8,7 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:just_audio/just_audio.dart';
+import 'package:geolocator/geolocator.dart';
 import '../../domain/entities/adan_entity.dart';
 import '../../domain/entities/hadith_entity.dart';
 import '../../domain/usecase/adan_usecase.dart';
@@ -463,6 +463,30 @@ class HomeCubit extends Cubit<HomeState> {
     pageNum = await sl<CacheHelper>().get('pageNum') ?? 0;
     surahName = await sl<CacheHelper>().get('surahName')?? '';
     emit(GetSavedDataSuccessState());
+  }
+
+  bool permission = false;
+  void getLocation()
+  async{
+    permission = !permission;
+    if(permission == true) {
+      await Geolocator.requestPermission();
+      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      currentLat = position.latitude;
+      currentLng = position.longitude;
+    }
+
+    sl<CacheHelper>().put('permission', permission);
+    emit(GetLocationState());
+  }
+
+  bool changePlayingValue = false;
+
+  void changePlaying({bool? value})
+  {
+    changePlayingValue= value ?? !changePlayingValue;
+
+    emit(TurnOnSoundState());
   }
 
 

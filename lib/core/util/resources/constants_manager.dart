@@ -265,6 +265,8 @@ String displayTranslatedText({
 double? currentLat;
 double? currentLng;
 
+bool? permission;
+
 int? surahNum = 0;
 int? ayahNum = 0;
 int? pageNum = 0;
