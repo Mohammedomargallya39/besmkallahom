@@ -3,11 +3,16 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-   <application
-        android:label="باسمك اللهم"
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+
+    <application
+        android:label="بسمك اللهم"
         android:name="${applicationName}"
         android:icon="@mipmap/icon">
-        <activity
+
+
+       <activity
             android:name=".MainActivity"
             android:exported="true"
             android:showWhenLocked="true"

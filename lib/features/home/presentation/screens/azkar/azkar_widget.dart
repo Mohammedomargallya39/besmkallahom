@@ -38,7 +38,7 @@ class AzkarWidget extends StatelessWidget {
           padding: designApp,
           child: BlocConsumer<HomeCubit,HomeState>(
             listener: (context, state) {
-              if(appBloc.isAppConnected && state is AdanSuccessState)
+              if(appBloc.isAppConnected && state is AdanSuccessState && salahTimes![0] == 'Open Network')
               {
                 navigateTo(context, const ElsalahTimeScreen());
               }

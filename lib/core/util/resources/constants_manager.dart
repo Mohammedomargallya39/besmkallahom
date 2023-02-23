@@ -273,3 +273,6 @@ int? pageNum = 0;
 String? surahName = 'لم تقرأ بعد';
 
 List<String>? salahTimes;
+
+
+bool? adanNotification = false;
