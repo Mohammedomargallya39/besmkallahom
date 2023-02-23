@@ -14,11 +14,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../../../../../core/di/injection.dart';
+import '../../../../../core/network/local/cache_helper.dart';
+
 class ElsalahTimeWidget extends StatelessWidget {
   const ElsalahTimeWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context){
+
+
     List<String> elsalahImages = [
       Assets.images.svg.elfagr,
       Assets.images.svg.elfagr,
@@ -54,6 +59,10 @@ class ElsalahTimeWidget extends StatelessWidget {
       timers = ['','','','','','',];
     }
 
+
+    homeCubit.alarmIcon = adanNotification!;
+
+
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         return Scaffold(
@@ -75,8 +84,9 @@ class ElsalahTimeWidget extends StatelessWidget {
                               title: AppString.elsalahAlarm, style: Style.small),
                           const Spacer(),
                           InkWell(
-                            onTap: () {
+                            onTap: () async{
                               homeCubit.changAlarm();
+                              adanNotification =  await sl<CacheHelper>().get('adanNotification');
                             },
                             child: SvgPicture.asset(homeCubit.alarmIcon
                                 ? Assets.images.svg.alarmTrue
