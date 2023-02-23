@@ -43,6 +43,7 @@ void main() async {
     'حان الآن موعد آذان العشاء',
   ];
 
+
   permission = await sl<CacheHelper>().get('permission') ?? false;
 
   if (permission == true) {
@@ -64,31 +65,31 @@ void main() async {
 
       /// times
       int.parse(salahTimes![0].substring(0,1)) == DateTime.now().hour ?
-      time = Time(int.parse(salahTimes![0].substring(0,1)),int.parse(salahTimes![0].substring(3,4)),0) :
+      time = Time(int.parse(salahTimes![0].substring(0,2)),int.parse(salahTimes![0].substring(3,5)),0) :
 
       int.parse(salahTimes![2].substring(0,1)) == DateTime.now().hour ?
-      time = Time(int.parse(salahTimes![2].substring(0,1)),int.parse(salahTimes![2].substring(3,4)),0) :
+      time = Time(int.parse(salahTimes![2].substring(0,2)),int.parse(salahTimes![2].substring(3,5)),0) :
 
       int.parse(salahTimes![3].substring(0,1)) == DateTime.now().hour ?
-      time = Time(int.parse(salahTimes![3].substring(0,1)),int.parse(salahTimes![3].substring(3,4)),0) :
+      time = Time(int.parse(salahTimes![3].substring(0,2)),int.parse(salahTimes![3].substring(3,5)),0) :
 
       int.parse(salahTimes![4].substring(0,1)) == DateTime.now().hour ?
-      time = Time(int.parse(salahTimes![4].substring(0,1)),int.parse(salahTimes![4].substring(3,4)),0) :
+      time = Time(int.parse(salahTimes![4].substring(0,2)),int.parse(salahTimes![4].substring(3,5)),0) :
 
-      time = Time(int.parse(salahTimes![5].substring(0,1)),int.parse(salahTimes![5].substring(3,4)),0);
+      time = Time(int.parse(salahTimes![5].substring(0,2)),int.parse(salahTimes![5].substring(3,5)),0);
 
       /// title
 
-      int.parse(salahTimes![0].substring(0,1)) == DateTime.now().hour ?
+      int.parse(salahTimes![0].substring(0,2)) == DateTime.now().hour ?
       notTitle = adan[0] :
 
-      int.parse(salahTimes![2].substring(0,1)) == DateTime.now().hour ?
+      int.parse(salahTimes![2].substring(0,2)) == DateTime.now().hour ?
       notTitle = adan[1] :
 
-      int.parse(salahTimes![3].substring(0,1)) == DateTime.now().hour ?
+      int.parse(salahTimes![3].substring(0,2)) == DateTime.now().hour ?
       notTitle = adan[2] :
 
-      int.parse(salahTimes![4].substring(0,1)) == DateTime.now().hour ?
+      int.parse(salahTimes![4].substring(0,2)) == DateTime.now().hour ?
       notTitle = adan[3] :
 
       notTitle = adan[4];
@@ -96,7 +97,7 @@ void main() async {
 
       /// sound
 
-      int.parse(salahTimes![0].substring(0,1)) == DateTime.now().hour ?
+      int.parse(salahTimes![0].substring(0,2)) == DateTime.now().hour ?
       adanSound = 'elfajr' :
       adanSound =  'adan' ;
 
