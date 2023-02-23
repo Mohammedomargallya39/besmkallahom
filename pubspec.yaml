@@ -101,8 +101,8 @@ flutter:
     - assets/images/svg/
     - assets/images/lotti/
     - assets/images/png/
-#    - assets/json/
     - assets/fonts/
+    - assets/sound/
     - assets/translations/
 
 
