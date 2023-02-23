@@ -4,6 +4,7 @@ import 'package:besmkallahom/core/network/local/cache_helper.dart';
 import 'package:besmkallahom/core/util/resources/constants_manager.dart';
 import 'package:besmkallahom/features/home/domain/entities/tafseer_entity.dart';
 import 'package:besmkallahom/features/home/presentation/controller/state.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -482,6 +483,8 @@ class HomeCubit extends Cubit<HomeState> {
 
     emit(TurnOnSoundState());
   }
+
+
 
 
 }
