@@ -53,13 +53,20 @@ class HadethDetailsWidget extends StatelessWidget {
                           ),
                         )
                     ),
-                  if(appBloc.isAppConnected == false)
-                    Expanded(
-                      flex: 11,
-                      child: Image.asset(Assets.images.png.network_error),
-                    ),
                   if(homeCubit.hadithResult == null)
-                    const Spacer(),
+                  Expanded(
+                    flex: 11,
+                    child: Center(
+                        child: DefaultText(
+                            title: 'تأكد من الإتصال بالإنترنت',
+                            style: Style.medium,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 22.rSp,
+                        ),
+                      ),
+                  ),
+                  if(homeCubit.hadithResult == null)
+                  const Spacer(),
                   Padding(
                     padding: EdgeInsetsDirectional.only(bottom: 2.h),
                     child: Row(
