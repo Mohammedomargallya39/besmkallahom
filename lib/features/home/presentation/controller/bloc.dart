@@ -427,17 +427,6 @@ class HomeCubit extends Cubit<HomeState> {
     emit(PrevPageState());
   }
 
-  // final ScrollController scrollController = ScrollController();
-  // void scrollToTop()
-  // {
-  //   scrollController.animateTo(
-  //       0,
-  //       duration: const Duration(milliseconds: 500),
-  //       curve: Curves.easeInOut,
-  //   );
-  //   emit(ScrollTopState());
-  // }
-
   List<HadithEntity>? hadithResult;
 
   void hadith({
@@ -466,6 +455,8 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   bool permission = false;
+  double? lat;
+  double? lng;
   void getLocation()
   async{
     permission = !permission;
@@ -474,6 +465,9 @@ class HomeCubit extends Cubit<HomeState> {
       Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       currentLat = position.latitude;
       currentLng = position.longitude;
+
+      lat = position.latitude;
+      lng = position.longitude;
     }
 
     sl<CacheHelper>().put('permission', permission);
