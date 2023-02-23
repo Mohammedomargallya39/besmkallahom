@@ -2,6 +2,7 @@ import 'package:besmkallahom/core/network/local/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geolocator/geolocator.dart';
 import '/core/di/injection.dart' as di;
 import 'core/di/injection.dart';
@@ -34,6 +35,7 @@ void main() async
     currentLat = position.latitude;
     currentLng = position.longitude;
   }
+
 
 
 

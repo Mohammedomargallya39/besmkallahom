@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:besmkallahom/core/util/resources/appString.dart';
 import 'package:besmkallahom/core/util/resources/assets.gen.dart';
 import 'package:besmkallahom/core/util/resources/constants_manager.dart';
@@ -38,7 +36,13 @@ class AzkarWidget extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: designApp,
-          child: BlocBuilder<HomeCubit,HomeState>(
+          child: BlocConsumer<HomeCubit,HomeState>(
+            listener: (context, state) {
+              if(appBloc.isAppConnected && state is AdanSuccessState)
+              {
+                navigateTo(context, const ElsalahTimeScreen());
+              }
+            },
             builder: (context, state) {
               return Column(
                 children: [
@@ -55,16 +59,16 @@ class AzkarWidget extends StatelessWidget {
                       itemBuilder: (context, index) => InkWell(
                         onTap: () async{
                           if(index == 5){
-                            homeCubit.getLocation();
+
                             Location location = Location();
-
                             PermissionStatus permissionStatus = await location.requestPermission();
-
 
 
                             if(permissionStatus == PermissionStatus.granted)
                             {
-                              if(appBloc.isAppConnected)
+                              homeCubit.getLocation();
+
+                              if(appBloc.isAppConnected && homeCubit.lat != null)
                               {
                                 homeCubit.adan(
                                     year: DateTime.now().year.toString(),
@@ -75,11 +79,21 @@ class AzkarWidget extends StatelessWidget {
                                     method: '5'
                                 );
                               }
-
-                              Timer(const Duration(seconds: 1), ()
+                              if(appBloc.isAppConnected == true && salahTimes![0] != 'Open Network')
                               {
                                 navigateTo(context, const ElsalahTimeScreen());
-                              });
+                              }
+
+                              if(appBloc.isAppConnected == false )
+                              {
+                                navigateTo(context, const ElsalahTimeScreen());
+                                designToastDialog(
+                                    context: context,
+                                    toast: TOAST.warning,
+                                    text: 'برجاء فتح الانترنت لتحديث الأوقات'
+                                );
+                              }
+
 
 
                             }
