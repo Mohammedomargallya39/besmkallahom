@@ -346,6 +346,8 @@ class HomeCubit extends Cubit<HomeState> {
   void changAlarm() {
     alarmIcon = !alarmIcon;
     emit(AlarmChangeState());
+    sl<CacheHelper>().put('adanNotification', alarmIcon);
+
   }
 
   List<AdanEntity>? adanResult;
