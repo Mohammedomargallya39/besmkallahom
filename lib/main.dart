@@ -63,12 +63,14 @@ void main() async {
 
 
       var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
-          'channel id 3',
+          'channel id 11',
           'channel name',
           importance: Importance.max,
           priority: Priority.high,
-          sound: RawResourceAndroidNotificationSound('adan'),
-          // playSound: true
+          colorized: true,
+          enableVibration: true,
+          sound: UriAndroidNotificationSound('assets/sound/adan.mp3'),
+          playSound: true
       );
       var iOSPlatformChannelSpecifics = const DarwinNotificationDetails(presentSound: true);
       var platformChannelSpecifics = NotificationDetails(
