@@ -58,72 +58,59 @@ void main() async {
   {
     Future<void> scheduleDailyNotification() async {
 
-      var time;
-      String notTitle;
-      String adanSound;
-
-
-      /// times
-      int.parse(salahTimes![0].substring(0,1)) == DateTime.now().hour ?
-      time = Time(int.parse(salahTimes![0].substring(0,2)),int.parse(salahTimes![0].substring(3,5)),0) :
-
-      int.parse(salahTimes![2].substring(0,1)) == DateTime.now().hour ?
-      time = Time(int.parse(salahTimes![2].substring(0,2)),int.parse(salahTimes![2].substring(3,5)),0) :
-
-      int.parse(salahTimes![3].substring(0,1)) == DateTime.now().hour ?
-      time = Time(int.parse(salahTimes![3].substring(0,2)),int.parse(salahTimes![3].substring(3,5)),0) :
-
-      int.parse(salahTimes![4].substring(0,1)) == DateTime.now().hour ?
-      time = Time(int.parse(salahTimes![4].substring(0,2)),int.parse(salahTimes![4].substring(3,5)),0) :
-
-      time = Time(int.parse(salahTimes![5].substring(0,2)),int.parse(salahTimes![5].substring(3,5)),0);
-
-      /// title
-
-      int.parse(salahTimes![0].substring(0,2)) == DateTime.now().hour ?
-      notTitle = adan[0] :
-
-      int.parse(salahTimes![2].substring(0,2)) == DateTime.now().hour ?
-      notTitle = adan[1] :
-
-      int.parse(salahTimes![3].substring(0,2)) == DateTime.now().hour ?
-      notTitle = adan[2] :
-
-      int.parse(salahTimes![4].substring(0,2)) == DateTime.now().hour ?
-      notTitle = adan[3] :
-
-      notTitle = adan[4];
-
-
-      /// sound
-
-      int.parse(salahTimes![0].substring(0,2)) == DateTime.now().hour ?
-      adanSound = 'elfajr' :
-      adanSound =  'adan' ;
-
-
       // time = const Time(19,21,30);
       // notTitle='test';
 
 
-      var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+      var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
           'channel id 3',
           'channel name',
           importance: Importance.max,
           priority: Priority.high,
-          sound: RawResourceAndroidNotificationSound(adanSound),
-          playSound: true
+          sound: RawResourceAndroidNotificationSound('adan'),
+          // playSound: true
       );
-      var iOSPlatformChannelSpecifics =
-      const DarwinNotificationDetails(presentSound: false);
+      var iOSPlatformChannelSpecifics = const DarwinNotificationDetails(presentSound: true);
       var platformChannelSpecifics = NotificationDetails(
           android: androidPlatformChannelSpecifics,
           iOS: iOSPlatformChannelSpecifics);
       await flutterLocalNotificationsPlugin.showDailyAtTime(
-        0,
+        1,
         'الآذان',
-        notTitle,
-        time,
+        adan[0],
+        Time(int.parse(salahTimes![0].substring(0,2)),int.parse(salahTimes![0].substring(3,5)),0),
+        platformChannelSpecifics,
+      );
+
+      await flutterLocalNotificationsPlugin.showDailyAtTime(
+        2,
+        'الآذان',
+        adan[1],
+        Time(int.parse(salahTimes![2].substring(0,2)),int.parse(salahTimes![2].substring(3,5)),0),
+        platformChannelSpecifics,
+      );
+
+      await flutterLocalNotificationsPlugin.showDailyAtTime(
+        3,
+        'الآذان',
+        adan[2],
+        Time(int.parse(salahTimes![3].substring(0,2)),int.parse(salahTimes![3].substring(3,5)),0),
+        platformChannelSpecifics,
+      );
+
+      await flutterLocalNotificationsPlugin.showDailyAtTime(
+        4,
+        'الآذان',
+        adan[3],
+        Time(int.parse(salahTimes![4].substring(0,2)),int.parse(salahTimes![4].substring(3,5)),0),
+        platformChannelSpecifics,
+      );
+
+      await flutterLocalNotificationsPlugin.showDailyAtTime(
+        5,
+        'الآذان',
+        adan[4],
+        Time(int.parse(salahTimes![5].substring(0,2)),int.parse(salahTimes![5].substring(3,5)),0),
         platformChannelSpecifics,
       );
     }
@@ -181,7 +168,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {
           return MaterialApp(
-            title: 'Nkhtem',
+            title: 'بسمك اللهم',
             debugShowCheckedModeBanner: false,
             themeMode: ThemeMode.light,
             theme: AppBloc.get(context).lightTheme,
