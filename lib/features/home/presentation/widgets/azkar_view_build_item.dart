@@ -1,15 +1,15 @@
-import 'package:besmkallahom/core/util/resources/appString.dart';
-import 'package:besmkallahom/core/util/resources/colors_manager.dart';
-import 'package:besmkallahom/core/util/resources/constants_manager.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
-import 'package:besmkallahom/core/util/widgets/default_text.dart';
-import 'package:besmkallahom/features/home/presentation/controller/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../../../core/util/resources/appString.dart';
+import '../../../../core/util/resources/assets.gen.dart';
+import '../../../../core/util/resources/colors_manager.dart';
+import '../../../../core/util/resources/constants_manager.dart';
+import '../../../../core/util/widgets/default_text.dart';
+import '../controller/bloc.dart';
 
 class AzkarViewBuildItem extends StatelessWidget {
   AzkarViewBuildItem({Key? key,required this.azkarColor,required this.azkar,required this.repetitionNum}) : super(key: key);
-
 
   Color azkarColor;
   String azkar;
@@ -90,6 +90,12 @@ class AzkarViewBuildItem extends StatelessWidget {
           decoration: BoxDecoration(
             color: ColorsManager.white,
             borderRadius: BorderRadius.circular(10.rSp),
+            image: DecorationImage(
+                image: AssetImage(
+                  Assets.images.png.appBackground,
+                ),
+                fit: BoxFit.cover
+            ),
           ),
           child: Center(
             child: DefaultText(

@@ -1,4 +1,3 @@
-import 'package:besmkallahom/core/network/local/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geolocator/geolocator.dart';
 import '/core/di/injection.dart' as di;
 import 'core/di/injection.dart';
+import 'core/network/local/cache_helper.dart';
 import 'core/util/cubit/cubit.dart';
 import 'core/util/cubit/state.dart';
 import 'core/util/resources/bloc_observer_manager.dart';
@@ -57,10 +57,6 @@ void main() async {
   if(adanNotification == true)
   {
     Future<void> scheduleDailyNotification() async {
-
-      // time = const Time(19,21,30);
-      // notTitle='test';
-
 
       var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
           'channel id 11',
@@ -119,8 +115,6 @@ void main() async {
     scheduleDailyNotification();
   }
 
-
-
   debugPrintFullText(salahTimes.toString());
   bool isRtl = false;
   String translation = await rootBundle
@@ -170,7 +164,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {
           return MaterialApp(
-            title: 'بسمك اللهم',
+            title: 'باسمك اللهم',
             debugShowCheckedModeBanner: false,
             themeMode: ThemeMode.light,
             theme: AppBloc.get(context).lightTheme,

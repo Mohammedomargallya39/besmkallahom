@@ -1,5 +1,6 @@
-import 'package:besmkallahom/features/home/presentation/screens/home/ahadeth_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'ahadeth_widget.dart';
 
 class AhadethScreen extends StatelessWidget {
   const AhadethScreen({Key? key}) : super(key: key);

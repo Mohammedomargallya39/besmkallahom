@@ -1,11 +1,10 @@
-
 import '../../domain/entities/adan_entity.dart';
 
 class AdanModel extends AdanEntity {
   AdanModel({
-    required super.timings,
-    required super.date,
-  });
+    required timings,
+    required date,
+  }) : super(timings: timings,date: date);
 
   factory AdanModel.fromJson(Map<String, dynamic> json) {
     return AdanModel(

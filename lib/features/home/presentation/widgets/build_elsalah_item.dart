@@ -1,13 +1,12 @@
-import 'package:besmkallahom/core/util/resources/colors_manager.dart';
-import 'package:besmkallahom/core/util/resources/constants_manager.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
-import 'package:besmkallahom/core/util/widgets/default_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../core/util/resources/colors_manager.dart';
+import '../../../../core/util/resources/constants_manager.dart';
+import '../../../../core/util/widgets/default_text.dart';
 
 class BuildElsalahItem extends StatelessWidget {
    BuildElsalahItem({Key? key,required this.elsalahImage,required this.elsalah, required this.indexImage, required this.timer}) : super(key: key);
-
 
   String elsalahImage;
   String elsalah;
@@ -27,8 +26,8 @@ class BuildElsalahItem extends StatelessWidget {
                 height: 12.h,
                 width: 25.w,
                 child: Image.asset(
-                  fit: BoxFit.cover,
                   elsalahImage,
+                  fit: BoxFit.cover,
                 ),
               ),
             if(indexImage != 4)
@@ -36,8 +35,8 @@ class BuildElsalahItem extends StatelessWidget {
                 height: 12.h,
                 width: 25.w,
                 child: SvgPicture.asset(
+                  elsalahImage,
                   fit: BoxFit.cover,
-                    elsalahImage,
                 ),
               ),
             DefaultText(title: timer, style: Style.small,color: ColorsManager.white,)
