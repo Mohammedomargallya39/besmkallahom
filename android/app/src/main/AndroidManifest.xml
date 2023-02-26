@@ -7,7 +7,7 @@
 
 
     <application
-        android:label="بسمك اللهم"
+        android:label="باسمك اللهم"
         android:name="${applicationName}"
         android:icon="@mipmap/icon">
 
