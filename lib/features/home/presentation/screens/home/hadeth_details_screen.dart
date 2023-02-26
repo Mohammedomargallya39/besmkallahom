@@ -1,5 +1,5 @@
-import 'package:besmkallahom/features/home/presentation/screens/home/hadeth_details_widget.dart';
 import 'package:flutter/material.dart';
+import 'hadeth_details_widget.dart';
 
 class HadethDetailScreen extends StatelessWidget {
   HadethDetailScreen({Key? key, required this.title, required this.bookName}) : super(key: key);

@@ -2,12 +2,12 @@ import '../../domain/entities/tafseer_entity.dart';
 
 class TafseerModel extends TafseerEntity {
   TafseerModel({
-    required super.tafseerId,
-    required super.ayahNumber,
-    required super.ayahUrl,
-    required super.tafseerName,
-    required super.tafseer,
-  });
+    required tafseerId,
+    required ayahNumber,
+    required ayahUrl,
+    required tafseerName,
+    required tafseer,
+  }) : super(ayahNumber: ayahNumber, ayahUrl: ayahUrl,tafseer: tafseer, tafseerId: tafseerId, tafseerName: tafseerName);
 
   factory TafseerModel.fromJson(Map<String, dynamic> json) {
     return TafseerModel(

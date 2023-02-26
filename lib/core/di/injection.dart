@@ -1,9 +1,9 @@
-import 'package:besmkallahom/features/home/date/data_source/home_remote_date_source.dart';
-import 'package:besmkallahom/features/home/domain/repository/home_base_repository.dart';
-import 'package:besmkallahom/features/home/domain/usecase/adan_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../features/home/date/data_source/home_remote_date_source.dart';
 import '../../features/home/date/repository/home_repository.dart';
+import '../../features/home/domain/repository/home_base_repository.dart';
+import '../../features/home/domain/usecase/adan_usecase.dart';
 import '../../features/home/domain/usecase/hadith_usecase.dart';
 import '../../features/home/domain/usecase/tafseer_usecase.dart';
 import '../../features/home/presentation/controller/bloc.dart';

@@ -1,10 +1,9 @@
-import 'package:besmkallahom/features/home/date/models/tafseer_model.dart';
 import 'package:dio/dio.dart';
 import '../../../../core/network/remote/api_endpoints.dart';
 import '../../../../core/network/remote/dio_helper.dart';
 import '../models/adan_model.dart';
 import '../models/hadith_model.dart';
-
+import '../models/tafseer_model.dart';
 
 abstract class HomeBaseRemoteDataSource {
   Future<List<AdanModel>> adan({
@@ -26,8 +25,6 @@ abstract class HomeBaseRemoteDataSource {
     required String bookName,
     required int pageNum,
   });
-
-
 }
 
 class HomeRemoteDataSourceImpl
@@ -76,7 +73,6 @@ class HomeRemoteDataSourceImpl
     return TafseerModel.fromJson(f.data);
   }
 
-
   @override
   Future<List<HadithModel>> hadith({
     required String bookName,
@@ -94,7 +90,4 @@ class HomeRemoteDataSourceImpl
     return List<HadithModel>.from(
         (f.data['hadiths']['data'] as List).map((e) => HadithModel.fromJson(e)));
   }
-
-
-
 }

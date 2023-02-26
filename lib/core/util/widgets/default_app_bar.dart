@@ -1,11 +1,10 @@
-import 'package:besmkallahom/core/util/resources/assets.gen.dart';
 import 'package:besmkallahom/core/util/resources/extensions_manager.dart';
-import 'package:besmkallahom/core/util/widgets/default_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import '../resources/assets.gen.dart';
 import '../resources/colors_manager.dart';
 import '../resources/constants_manager.dart';
+import 'default_text.dart';
 
 PreferredSizeWidget defaultAppBar({
   required BuildContext context,

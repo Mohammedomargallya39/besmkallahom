@@ -3,9 +3,6 @@
 ///  FlutterGen
 /// *****************************************************
 
-// coverage:ignore-file
-// ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:besmkallahom/core/util/resources/translation_manager.dart';
 import 'package:flutter/widgets.dart';
@@ -77,8 +74,11 @@ class $AssetsImagesPngGen {
   /// File path: assets/images/png/network_error.png
   String get network_error => 'assets/images/png/network_error.png';
 
+  /// File path: assets/images/png/app_background.png
+  String get appBackground => 'assets/images/png/app_background.png';
+
   /// List of all assets
-  List<String> get values => [surahCard,elmaghrb,network_error];
+  List<String> get values => [surahCard,elmaghrb,network_error,appBackground];
 }
 
 ///SVG
